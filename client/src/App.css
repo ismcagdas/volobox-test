@@ -3,9 +3,36 @@
   text-align: left;
 }
 
+.hotel-search {
+  margin: 16px 0 20px;
+}
+
+.hotel-search__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.hotel-search__input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
 .hotel-list-subtitle {
   color: var(--text);
   margin-bottom: 24px;
+}
+
+.hotel-list-empty {
+  color: var(--text);
+  padding: 32px 0;
 }
 
 .hotel-list {
