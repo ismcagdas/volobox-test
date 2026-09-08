@@ -89,7 +89,17 @@
 }
 
 .hotel-list-results {
-  min-height: 200px;
+  position: relative;
+}
+
+.hotel-list-measure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .hotel-list-empty {

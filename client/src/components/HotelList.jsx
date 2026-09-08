@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import hotels from '../data/hotels'
 import HotelCard from './HotelCard'
 import HotelFilters from './HotelFilters'
@@ -37,6 +37,29 @@ function HotelList() {
   const [minPrice, setMinPrice] = useState(INITIAL_FILTERS.minPrice)
   const [maxPrice, setMaxPrice] = useState(INITIAL_FILTERS.maxPrice)
 
+  // Reserve enough height for the largest the results area can ever be (the
+  // full, unfiltered grid) so applying/clearing filters never shrinks the
+  // visible list and causes it to jump/jitter. Measured from a hidden copy
+  // of the full grid so it stays correct as the viewport width changes the
+  // number of columns/rows.
+  const measureRef = useRef(null)
+  const [reservedHeight, setReservedHeight] = useState(0)
+
+  useLayoutEffect(() => {
+    const measureEl = measureRef.current
+    if (!measureEl || typeof ResizeObserver === 'undefined') return undefined
+
+    const updateReservedHeight = () => {
+      setReservedHeight(measureEl.offsetHeight)
+    }
+
+    updateReservedHeight()
+    const observer = new ResizeObserver(updateReservedHeight)
+    observer.observe(measureEl)
+
+    return () => observer.disconnect()
+  }, [])
+
   const filteredHotels = useMemo(() => {
     return hotels.filter(
       (hotel) =>
@@ -68,7 +91,7 @@ function HotelList() {
         onClear={handleClear}
       />
       <p className="hotel-list-subtitle">{filteredHotels.length} hotels found</p>
-      <div className="hotel-list-results">
+      <div className="hotel-list-results" style={{ minHeight: reservedHeight || undefined }}>
         {filteredHotels.length > 0 ? (
           <ul className="hotel-list">
             {filteredHotels.map((hotel) => (
@@ -78,6 +101,11 @@ function HotelList() {
         ) : (
           <p className="hotel-list-empty">No hotels match your filters. Try adjusting your search or filters.</p>
         )}
+        <ul className="hotel-list hotel-list-measure" ref={measureRef} aria-hidden="true" inert>
+          {hotels.map((hotel) => (
+            <HotelCard key={hotel.id} hotel={hotel} />
+          ))}
+        </ul>
       </div>
     </section>
   )
