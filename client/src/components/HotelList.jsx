@@ -10,11 +10,18 @@ function HotelList() {
   const debouncedQuery = useDebouncedValue(query, DEBOUNCE_MS)
   const inputRef = useRef(null)
 
+  // When the input is emptied (e.g. via the clear button), reset to the
+  // full list immediately instead of waiting for the debounce to catch up.
+  // Any non-empty query still filters using the debounced value so typing
+  // doesn't re-render the list on every keystroke.
+  const isQueryEmpty = query.trim() === ''
+
   const filteredHotels = useMemo(() => {
+    if (isQueryEmpty) return hotels
     const normalizedQuery = debouncedQuery.trim().toLowerCase()
     if (!normalizedQuery) return hotels
     return hotels.filter((hotel) => hotel.name.toLowerCase().includes(normalizedQuery))
-  }, [debouncedQuery])
+  }, [isQueryEmpty, debouncedQuery])
 
   const handleClear = () => {
     setQuery('')
