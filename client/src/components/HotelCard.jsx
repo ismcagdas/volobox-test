@@ -8,19 +8,32 @@ const FALLBACK_IMAGE =
       '</svg>',
   )
 
-function HotelCard({ hotel }) {
+function HotelCard({ hotel, isFavourite, onToggleFavourite }) {
   return (
     <li className="hotel-card">
-      <img
-        className="hotel-card__image"
-        src={hotel.imageUrl}
-        alt={hotel.name}
-        loading="lazy"
-        onError={(event) => {
-          event.currentTarget.onerror = null
-          event.currentTarget.src = FALLBACK_IMAGE
-        }}
-      />
+      <div className="hotel-card__image-wrap">
+        <img
+          className="hotel-card__image"
+          src={hotel.imageUrl}
+          alt={hotel.name}
+          loading="lazy"
+          onError={(event) => {
+            event.currentTarget.onerror = null
+            event.currentTarget.src = FALLBACK_IMAGE
+          }}
+        />
+        <button
+          type="button"
+          className={`hotel-card__favourite${isFavourite ? ' hotel-card__favourite--active' : ''}`}
+          aria-pressed={isFavourite}
+          aria-label={
+            isFavourite ? `Remove ${hotel.name} from favourites` : `Add ${hotel.name} to favourites`
+          }
+          onClick={() => onToggleFavourite(hotel.id)}
+        >
+          <span aria-hidden="true">{isFavourite ? '♥' : '♡'}</span>
+        </button>
+      </div>
       <div className="hotel-card__body">
         <h3 className="hotel-card__name">{hotel.name}</h3>
         <p className="hotel-card__city">{hotel.city}</p>

@@ -8,6 +8,40 @@
   margin-bottom: 24px;
 }
 
+.hotel-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.hotel-filter__button {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: var(--sans);
+  cursor: pointer;
+}
+
+.hotel-filter__button:hover {
+  border-color: var(--accent-border);
+}
+
+.hotel-filter__button--active {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.hotel-list-empty {
+  color: var(--text);
+  padding: 40px 0;
+  text-align: center;
+}
+
 .hotel-list {
   list-style: none;
   margin: 0;
@@ -26,11 +60,46 @@
   background: var(--bg);
 }
 
+.hotel-card__image-wrap {
+  position: relative;
+}
+
 .hotel-card__image {
   width: 100%;
   height: 180px;
   object-fit: cover;
   display: block;
+}
+
+.hotel-card__favourite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-h);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hotel-card__favourite:hover {
+  background: #fff;
+}
+
+.hotel-card__favourite:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.hotel-card__favourite--active {
+  color: #e0245e;
 }
 
 .hotel-card__body {
