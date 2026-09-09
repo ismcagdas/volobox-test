@@ -8,6 +8,57 @@
   margin-bottom: 24px;
 }
 
+.hotel-search {
+  margin-bottom: 20px;
+}
+
+.hotel-search__label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.hotel-search__field {
+  position: relative;
+  max-width: 360px;
+}
+
+.hotel-search__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 36px 8px 12px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.hotel-search__clear {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.hotel-search__clear:hover,
+.hotel-search__clear:focus-visible {
+  color: var(--text-h);
+}
+
+.hotel-list-empty {
+  color: var(--text);
+}
+
 .hotel-list {
   list-style: none;
   margin: 0;
