@@ -3,9 +3,34 @@
   text-align: left;
 }
 
+.hotel-search {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  max-width: 320px;
+}
+
+.hotel-search__label {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.hotel-search__input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
 .hotel-list-subtitle {
   color: var(--text);
   margin-bottom: 24px;
+}
+
+.hotel-list-empty {
+  color: var(--text);
+  padding: 24px 0;
 }
 
 .hotel-list {
