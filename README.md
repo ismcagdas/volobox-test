@@ -16,16 +16,6 @@ Her otel kartında şunlar yer alır:
 
 Liste, ekran genişliğine göre ızgara düzeninde açılır.
 
-## Çalıştırma
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
-Geliştirme sunucusu ayağa kalktıktan sonra tarayıcıda Vite’ın verdiği adresi açın.
-
 ## Proje yapısı
 
 ```
