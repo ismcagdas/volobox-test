@@ -16,7 +16,7 @@ Her otel kartında şunlar yer alır:
 
 Liste, ekran genişliğine göre ızgara düzeninde açılır.
 
-## Çalıştırma
+## Running locally
 
 ```bash
 cd client
@@ -24,7 +24,7 @@ npm install
 npm run dev
 ```
 
-Geliştirme sunucusu ayağa kalktıktan sonra tarayıcıda Vite’ın verdiği adresi açın.
+Once the dev server starts, open the address printed by Vite in your browser.
 
 ## Proje yapısı
 
@@ -37,13 +37,3 @@ client/
       HotelList.jsx         # Otel listesi
       HotelCard.jsx         # Tek otel kartı
 ```
-
-## Running locally
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
-Once the dev server starts, open the address printed by Vite in your browser.
