@@ -37,3 +37,11 @@ client/
       HotelList.jsx         # Otel listesi
       HotelCard.jsx         # Tek otel kartı
 ```
+
+## Running locally
+
+```bash
+cd client
+npm install
+npm run dev
+```
