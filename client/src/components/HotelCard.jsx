@@ -8,6 +8,16 @@ const FALLBACK_IMAGE =
       '</svg>',
   )
 
+function formatLastSynced(isoString) {
+  if (!isoString) return 'Unknown'
+  const date = new Date(isoString)
+  if (Number.isNaN(date.getTime())) return 'Unknown'
+  return date.toLocaleString(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  })
+}
+
 function HotelCard({ hotel }) {
   return (
     <li className="hotel-card">
@@ -28,6 +38,10 @@ function HotelCard({ hotel }) {
         <div className="hotel-card__footer">
           <span className="hotel-card__rating">⭐ {Number(hotel.rating || 0).toFixed(1)}</span>
           <span className="hotel-card__price">${hotel.pricePerNight} / night</span>
+        </div>
+        <div className="hotel-card__sync">
+          <span className="hotel-card__sync-label">Last synced</span>
+          <span className="hotel-card__sync-value">{formatLastSynced(hotel.lastSyncedAt)}</span>
         </div>
       </div>
     </li>

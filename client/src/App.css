@@ -92,3 +92,22 @@
   font-weight: 600;
   color: var(--text-h);
 }
+
+.hotel-card__sync {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.hotel-card__sync-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.hotel-card__sync-value {
+  font-size: 13px;
+  color: var(--text);
+}

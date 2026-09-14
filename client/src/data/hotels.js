@@ -7,6 +7,7 @@ const hotels = [
     pricePerNight: 220,
     imageUrl: 'https://picsum.photos/seed/hotel1/400/250',
     description: 'A luxurious stay in the heart of Manhattan with skyline views.',
+    lastSyncedAt: '2026-09-12T15:45:00Z',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const hotels = [
     pricePerNight: 310,
     imageUrl: 'https://picsum.photos/seed/hotel2/400/250',
     description: 'Beachfront rooms with private balconies and ocean views.',
+    lastSyncedAt: '2026-09-11T09:20:00Z',
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const hotels = [
     pricePerNight: 275,
     imageUrl: 'https://picsum.photos/seed/hotel3/400/250',
     description: 'Cozy cabins nestled in the mountains, perfect for winter getaways.',
+    lastSyncedAt: '2026-09-10T18:05:00Z',
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const hotels = [
     pricePerNight: 150,
     imageUrl: 'https://picsum.photos/seed/hotel4/400/250',
     description: 'Affordable comfort within walking distance of downtown attractions.',
+    lastSyncedAt: '2026-09-13T07:30:00Z',
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const hotels = [
     pricePerNight: 190,
     imageUrl: 'https://picsum.photos/seed/hotel5/400/250',
     description: 'Vibrant hotel with rooftop pool and stunning sunset views.',
+    lastSyncedAt: '2026-09-09T22:10:00Z',
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const hotels = [
     pricePerNight: 260,
     imageUrl: 'https://picsum.photos/seed/hotel6/400/250',
     description: 'A charming historic property overlooking the Seine river.',
+    lastSyncedAt: '2026-09-08T12:00:00Z',
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ const hotels = [
     pricePerNight: 340,
     imageUrl: 'https://picsum.photos/seed/hotel7/400/250',
     description: 'Traditional Japanese hospitality with tranquil garden views.',
+    lastSyncedAt: '2026-09-13T23:15:00Z',
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ const hotels = [
     pricePerNight: 400,
     imageUrl: 'https://picsum.photos/seed/hotel8/400/250',
     description: 'Opulent desert resort with world-class spa and dining.',
+    lastSyncedAt: '2026-09-07T16:40:00Z',
   },
   {
     id: 9,
@@ -79,6 +87,7 @@ const hotels = [
     pricePerNight: 230,
     imageUrl: 'https://picsum.photos/seed/hotel9/400/250',
     description: 'Charming alpine-style hotel with easy access to ski slopes.',
+    lastSyncedAt: '2026-09-06T05:55:00Z',
   },
   {
     id: 10,
@@ -88,6 +97,7 @@ const hotels = [
     pricePerNight: 285,
     imageUrl: 'https://picsum.photos/seed/hotel10/400/250',
     description: 'Modern suites with panoramic views of Sydney Harbour.',
+    lastSyncedAt: '2026-09-14T02:25:00Z',
   },
 ]
 
