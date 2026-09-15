@@ -1,5 +1,7 @@
 # Volobox Hotels
 
+We use AI for development of this project
+
 Volobox Hotels, otel arama ve keşif deneyimini basit bir arayüzle gösteren bir ön yüz uygulamasıdır. Amaç, gerçek bir rezervasyon backend’i olmadan otel listesini kartlar halinde sunmak ve kullanıcıya isim, şehir, açıklama, puan ve gecelik fiyat gibi temel bilgileri tek bakışta vermektir.
 
 Uygulama React ve Vite ile yazılmıştır. Oteller `client/src/data/hotels.js` içindeki örnek veriden okunur; henüz API veya veritabanı bağlantısı yoktur.
