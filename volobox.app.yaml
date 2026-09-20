@@ -1,0 +1,21 @@
+# volobox.app.yaml — Volobox Hotels (manifest v2) — static React/Vite frontend, no backend
+
+name: volobox-hotels
+
+init:
+  - run: npm install
+    cwd: client
+
+services:
+  - name: www
+    kind: command
+    cwd: client
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    port: 5173
+    primary: true
+    healthcheck: /
+    restartPolicy: on-change
+
+completion:
+  pauseOn: manual
+  idleTimeoutMinutes: 30
