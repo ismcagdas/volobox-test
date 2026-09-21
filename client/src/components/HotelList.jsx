@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import hotels from '../data/hotels'
 import HotelCard from './HotelCard'
 import HotelFilters from './HotelFilters'
+import HotelMap from './HotelMap'
 
 const priceBounds = {
   min: Math.min(...hotels.map((hotel) => hotel.pricePerNight)),
@@ -12,6 +13,7 @@ function HotelList() {
   const [query, setQuery] = useState('')
   const [minRating, setMinRating] = useState(0)
   const [maxPrice, setMaxPrice] = useState(priceBounds.max)
+  const [viewMode, setViewMode] = useState('list')
 
   const trimmedQuery = query.trim().toLowerCase()
 
@@ -53,13 +55,37 @@ function HotelList() {
           onMaxPriceChange={setMaxPrice}
         />
         <div className="hotel-list-content">
-          <p className="hotel-list-subtitle">{filteredHotels.length} hotels found</p>
+          <div className="hotel-list-toolbar">
+            <p className="hotel-list-subtitle">{filteredHotels.length} hotels found</p>
+            <div className="hotel-view-switch" role="group" aria-label="View mode">
+              <button
+                type="button"
+                className={`hotel-view-switch__button${viewMode === 'list' ? ' hotel-view-switch__button--active' : ''}`}
+                onClick={() => setViewMode('list')}
+                aria-pressed={viewMode === 'list'}
+              >
+                List
+              </button>
+              <button
+                type="button"
+                className={`hotel-view-switch__button${viewMode === 'map' ? ' hotel-view-switch__button--active' : ''}`}
+                onClick={() => setViewMode('map')}
+                aria-pressed={viewMode === 'map'}
+              >
+                Map
+              </button>
+            </div>
+          </div>
           {filteredHotels.length > 0 ? (
-            <ul className="hotel-list">
-              {filteredHotels.map((hotel) => (
-                <HotelCard key={hotel.id} hotel={hotel} />
-              ))}
-            </ul>
+            viewMode === 'list' ? (
+              <ul className="hotel-list">
+                {filteredHotels.map((hotel) => (
+                  <HotelCard key={hotel.id} hotel={hotel} />
+                ))}
+              </ul>
+            ) : (
+              <HotelMap hotels={filteredHotels} />
+            )
           ) : (
             <p className="hotel-list-empty">No hotels match your search.</p>
           )}
