@@ -4,27 +4,44 @@ import HotelCard from './HotelCard'
 
 const RATING_OPTIONS = [
   { label: 'Any rating', value: 0 },
-  { label: '4.0+', value: 4 },
-  { label: '4.5+', value: 4.5 },
+  { label: 'Good: 4.0+', value: 4 },
+  { label: 'Wonderful: 4.5+', value: 4.5 },
 ]
+
+const SORT_OPTIONS = [
+  { label: 'Our top picks', value: 'top' },
+  { label: 'Price (lowest first)', value: 'price-asc' },
+  { label: 'Price (highest first)', value: 'price-desc' },
+  { label: 'Best reviewed', value: 'rating' },
+]
+
+const sorters = {
+  top: () => 0,
+  'price-asc': (a, b) => a.pricePerNight - b.pricePerNight,
+  'price-desc': (a, b) => b.pricePerNight - a.pricePerNight,
+  rating: (a, b) => b.rating - a.rating,
+}
 
 function HotelList() {
   const [query, setQuery] = useState('')
   const [selectedCities, setSelectedCities] = useState([])
   const [minRating, setMinRating] = useState(0)
+  const [sortBy, setSortBy] = useState('top')
 
   const cities = useMemo(() => Array.from(new Set(hotels.map((hotel) => hotel.city))).sort(), [])
   const highestPrice = useMemo(() => Math.max(...hotels.map((hotel) => hotel.pricePerNight)), [])
   const [maxPrice, setMaxPrice] = useState(highestPrice)
 
   const trimmedQuery = query.trim().toLowerCase()
-  const filteredHotels = hotels.filter((hotel) => {
-    if (trimmedQuery && !hotel.name.toLowerCase().includes(trimmedQuery)) return false
-    if (selectedCities.length > 0 && !selectedCities.includes(hotel.city)) return false
-    if (hotel.pricePerNight > maxPrice) return false
-    if (hotel.rating < minRating) return false
-    return true
-  })
+  const filteredHotels = hotels
+    .filter((hotel) => {
+      if (trimmedQuery && !hotel.name.toLowerCase().includes(trimmedQuery)) return false
+      if (selectedCities.length > 0 && !selectedCities.includes(hotel.city)) return false
+      if (hotel.pricePerNight > maxPrice) return false
+      if (hotel.rating < minRating) return false
+      return true
+    })
+    .sort(sorters[sortBy])
 
   const toggleCity = (city) => {
     setSelectedCities((prev) =>
@@ -42,92 +59,133 @@ function HotelList() {
     setMinRating(0)
   }
 
+  const countFor = (city) => hotels.filter((hotel) => hotel.city === city).length
+
   return (
-    <div className="hotel-page">
-      <aside className="hotel-filters">
-        <div className="hotel-filters__header">
-          <h2>Filters</h2>
-          {hasActiveFilters && (
-            <button type="button" className="hotel-filters__reset" onClick={resetFilters}>
-              Clear all
+    <>
+      <section className="hero">
+        <div className="hero__inner">
+          <h1 className="hero__title">Find your next stay</h1>
+          <p className="hero__subtitle">Search low prices on hotels, homes and much more…</p>
+          <div className="searchbar">
+            <label className="searchbar__field" htmlFor="hotel-search-input">
+              <span className="searchbar__icon" aria-hidden="true">
+                🛏
+              </span>
+              <input
+                id="hotel-search-input"
+                type="text"
+                className="searchbar__input"
+                placeholder="Where are you going?"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </label>
+            <button type="button" className="searchbar__submit">
+              Search
             </button>
-          )}
-        </div>
-
-        <div className="hotel-filters__group">
-          <h3 className="hotel-filters__title">Destination</h3>
-          <div className="hotel-filters__options">
-            {cities.map((city) => (
-              <label key={city} className="hotel-filters__checkbox">
-                <input
-                  type="checkbox"
-                  checked={selectedCities.includes(city)}
-                  onChange={() => toggleCity(city)}
-                />
-                {city}
-              </label>
-            ))}
           </div>
         </div>
-
-        <div className="hotel-filters__group">
-          <h3 className="hotel-filters__title">Max price per night</h3>
-          <input
-            type="range"
-            min={0}
-            max={highestPrice}
-            value={maxPrice}
-            onChange={(event) => setMaxPrice(Number(event.target.value))}
-            className="hotel-filters__range"
-          />
-          <p className="hotel-filters__range-value">Up to ${maxPrice}</p>
-        </div>
-
-        <div className="hotel-filters__group">
-          <h3 className="hotel-filters__title">Minimum rating</h3>
-          <div className="hotel-filters__options">
-            {RATING_OPTIONS.map((option) => (
-              <label key={option.value} className="hotel-filters__checkbox">
-                <input
-                  type="radio"
-                  name="minRating"
-                  checked={minRating === option.value}
-                  onChange={() => setMinRating(option.value)}
-                />
-                {option.label}
-              </label>
-            ))}
-          </div>
-        </div>
-      </aside>
-
-      <section className="hotel-list-section">
-        <h1>Hotels</h1>
-        <div className="hotel-search">
-          <label className="hotel-search__label" htmlFor="hotel-search-input">
-            Search hotels by name
-          </label>
-          <input
-            id="hotel-search-input"
-            type="text"
-            className="hotel-search__input"
-            placeholder="Search hotels by name..."
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-          />
-        </div>
-        <p className="hotel-list-subtitle">{filteredHotels.length} hotels found</p>
-        {filteredHotels.length > 0 ? (
-          <ul className="hotel-list">
-            {filteredHotels.map((hotel) => (
-              <HotelCard key={hotel.id} hotel={hotel} />
-            ))}
-          </ul>
-        ) : (
-          <p className="hotel-list-empty">No hotels match your filters.</p>
-        )}
       </section>
-    </div>
+
+      <div className="hotel-page">
+        <aside className="hotel-filters">
+          <div className="hotel-filters__header">
+            <h2 className="hotel-filters__heading">Filter by:</h2>
+            {hasActiveFilters && (
+              <button type="button" className="hotel-filters__reset" onClick={resetFilters}>
+                Clear all
+              </button>
+            )}
+          </div>
+
+          <div className="hotel-filters__group">
+            <h3 className="hotel-filters__title">Destination</h3>
+            <div className="hotel-filters__options">
+              {cities.map((city) => (
+                <label key={city} className="hotel-filters__checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedCities.includes(city)}
+                    onChange={() => toggleCity(city)}
+                  />
+                  <span className="hotel-filters__label">{city}</span>
+                  <span className="hotel-filters__count">{countFor(city)}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="hotel-filters__group">
+            <h3 className="hotel-filters__title">Your budget (per night)</h3>
+            <input
+              type="range"
+              min={0}
+              max={highestPrice}
+              value={maxPrice}
+              onChange={(event) => setMaxPrice(Number(event.target.value))}
+              className="hotel-filters__range"
+            />
+            <p className="hotel-filters__range-value">
+              US$0 – <strong>US${maxPrice}</strong>
+            </p>
+          </div>
+
+          <div className="hotel-filters__group">
+            <h3 className="hotel-filters__title">Property rating</h3>
+            <div className="hotel-filters__options">
+              {RATING_OPTIONS.map((option) => (
+                <label key={option.value} className="hotel-filters__checkbox">
+                  <input
+                    type="radio"
+                    name="minRating"
+                    checked={minRating === option.value}
+                    onChange={() => setMinRating(option.value)}
+                  />
+                  <span className="hotel-filters__label">{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <section className="hotel-list-section">
+          <div className="hotel-list-head">
+            <h1 className="hotel-list-title">
+              Stays: <span>{filteredHotels.length} properties found</span>
+            </h1>
+          </div>
+
+          <div className="sortbar" role="tablist" aria-label="Sort results">
+            <span className="sortbar__label">Sort by:</span>
+            {SORT_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                role="tab"
+                aria-selected={sortBy === option.value}
+                className={
+                  'sortbar__tab' + (sortBy === option.value ? ' sortbar__tab--active' : '')
+                }
+                onClick={() => setSortBy(option.value)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          {filteredHotels.length > 0 ? (
+            <ul className="hotel-list">
+              {filteredHotels.map((hotel) => (
+                <HotelCard key={hotel.id} hotel={hotel} />
+              ))}
+            </ul>
+          ) : (
+            <p className="hotel-list-empty">No properties match your filters.</p>
+          )}
+        </section>
+      </div>
+    </>
   )
 }
 
