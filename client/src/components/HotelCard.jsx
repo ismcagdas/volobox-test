@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
@@ -11,25 +13,27 @@ const FALLBACK_IMAGE =
 function HotelCard({ hotel }) {
   return (
     <li className="hotel-card">
-      <img
-        className="hotel-card__image"
-        src={hotel.imageUrl}
-        alt={hotel.name}
-        loading="lazy"
-        onError={(event) => {
-          event.currentTarget.onerror = null
-          event.currentTarget.src = FALLBACK_IMAGE
-        }}
-      />
-      <div className="hotel-card__body">
-        <h3 className="hotel-card__name">{hotel.name}</h3>
-        <p className="hotel-card__city">{hotel.city}</p>
-        <p className="hotel-card__description">{hotel.description}</p>
-        <div className="hotel-card__footer">
-          <span className="hotel-card__rating">⭐ {Number(hotel.rating || 0).toFixed(1)}</span>
-          <span className="hotel-card__price">${hotel.pricePerNight} / night</span>
+      <Link className="hotel-card__link" to={`/hotels/${hotel.id}`}>
+        <img
+          className="hotel-card__image"
+          src={hotel.imageUrl}
+          alt={hotel.name}
+          loading="lazy"
+          onError={(event) => {
+            event.currentTarget.onerror = null
+            event.currentTarget.src = FALLBACK_IMAGE
+          }}
+        />
+        <div className="hotel-card__body">
+          <h3 className="hotel-card__name">{hotel.name}</h3>
+          <p className="hotel-card__city">{hotel.city}</p>
+          <p className="hotel-card__description">{hotel.description}</p>
+          <div className="hotel-card__footer">
+            <span className="hotel-card__rating">⭐ {Number(hotel.rating || 0).toFixed(1)}</span>
+            <span className="hotel-card__price">${hotel.pricePerNight} / night</span>
+          </div>
         </div>
-      </div>
+      </Link>
     </li>
   )
 }
