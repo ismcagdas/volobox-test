@@ -6,7 +6,7 @@ const hotels = [
     address: '768 5th Avenue, New York, NY 10019',
     rating: 4.7,
     pricePerNight: 220,
-    imageUrl: 'https://picsum.photos/seed/hotel1/400/250',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plaza%20Hotel%20NYC.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel1/800/500',
       'https://picsum.photos/seed/hotel1b/800/500',
@@ -24,7 +24,7 @@ const hotels = [
     address: '22000 Pacific Coast Highway, Malibu, CA 90265',
     rating: 4.5,
     pricePerNight: 310,
-    imageUrl: 'https://picsum.photos/seed/hotel2/400/250',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malibu%20Beach%20Panorama.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel2/800/500',
       'https://picsum.photos/seed/hotel2b/800/500',
@@ -42,7 +42,7 @@ const hotels = [
     address: '415 Dean Street, Aspen, CO 81611',
     rating: 4.8,
     pricePerNight: 275,
-    imageUrl: 'https://picsum.photos/seed/hotel3/400/250',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Aspen%20Saint%20Regis%20Hotel.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel3/800/500',
       'https://picsum.photos/seed/hotel3b/800/500',
@@ -60,7 +60,7 @@ const hotels = [
     address: '88 W Randolph Street, Chicago, IL 60601',
     rating: 4.1,
     pricePerNight: 150,
-    imageUrl: 'https://picsum.photos/seed/hotel4/400/250',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Loews%20Hotel%20Tower%20in%20Chicago.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel4/800/500',
       'https://picsum.photos/seed/hotel4b/800/500',
@@ -78,7 +78,8 @@ const hotels = [
     address: '1500 Ocean Drive, Miami Beach, FL 33139',
     rating: 4.3,
     pricePerNight: 190,
-    imageUrl: 'https://picsum.photos/seed/hotel5/400/250',
+    imageUrl:
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Cavalier%20South%20Beach%20Hotel%2C%20Miami%20Beach%2C%20Florida.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel5/800/500',
       'https://picsum.photos/seed/hotel5b/800/500',
@@ -96,7 +97,8 @@ const hotels = [
     address: '12 Quai de Montebello, 75005 Paris, France',
     rating: 4.6,
     pricePerNight: 260,
-    imageUrl: 'https://picsum.photos/seed/hotel6/400/250',
+    imageUrl:
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Paris-Notre%20Dame-130-Quai%20de%20Montebello-2017-gje.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel6/800/500',
       'https://picsum.photos/seed/hotel6b/800/500',
@@ -114,7 +116,7 @@ const hotels = [
     address: '3 Chome Gion, Higashiyama Ward, Kyoto, Japan',
     rating: 4.9,
     pricePerNight: 340,
-    imageUrl: 'https://picsum.photos/seed/hotel7/400/250',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tawaraya%20Ryokan%2C%20Kyoto%2001.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel7/800/500',
       'https://picsum.photos/seed/hotel7b/800/500',
@@ -132,7 +134,8 @@ const hotels = [
     address: 'Sheikh Zayed Road, Dubai, UAE',
     rating: 4.4,
     pricePerNight: 400,
-    imageUrl: 'https://picsum.photos/seed/hotel8/400/250',
+    imageUrl:
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20Burj%20al%20Arab%20in%20Dubay%202.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel8/800/500',
       'https://picsum.photos/seed/hotel8b/800/500',
@@ -150,7 +153,8 @@ const hotels = [
     address: 'Bahnhofstrasse 45, 8001 Zurich, Switzerland',
     rating: 4.2,
     pricePerNight: 230,
-    imageUrl: 'https://picsum.photos/seed/hotel9/400/250',
+    imageUrl:
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Chalet%20Hotel%20Alte%20Post%2C%20Grindelwald.jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel9/800/500',
       'https://picsum.photos/seed/hotel9b/800/500',
@@ -168,7 +172,8 @@ const hotels = [
     address: '1 Circular Quay, Sydney NSW 2000, Australia',
     rating: 4.5,
     pricePerNight: 285,
-    imageUrl: 'https://picsum.photos/seed/hotel10/400/250',
+    imageUrl:
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Sydney%20Harbour%20Bridge%20from%20Circular%20Quay%20(cropped).jpg?width=700',
     gallery: [
       'https://picsum.photos/seed/hotel10/800/500',
       'https://picsum.photos/seed/hotel10b/800/500',
