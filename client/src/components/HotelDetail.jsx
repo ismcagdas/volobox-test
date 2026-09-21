@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import hotels from '../data/hotels'
+import ratingLabel from '../ratingLabel'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -12,6 +13,11 @@ const FALLBACK_IMAGE =
       '</svg>',
   )
 
+const handleImageError = (event) => {
+  event.currentTarget.onerror = null
+  event.currentTarget.src = FALLBACK_IMAGE
+}
+
 function HotelDetail() {
   const { id } = useParams()
   const hotel = hotels.find((item) => String(item.id) === id)
@@ -22,28 +28,45 @@ function HotelDetail() {
     return (
       <section className="hotel-detail-section">
         <Link className="hotel-detail__back" to="/">
-          ← Back to hotels
+          ← Back to search results
         </Link>
         <p className="hotel-list-empty">Hotel not found.</p>
       </section>
     )
   }
 
+  const rating = Number(hotel.rating || 0)
+
   return (
     <section className="hotel-detail-section">
-      <Link className="hotel-detail__back" to="/">
-        ← Back to hotels
-      </Link>
+      <nav className="breadcrumbs">
+        <Link to="/">Home</Link>
+        <span aria-hidden="true">›</span>
+        <span>{hotel.city}</span>
+        <span aria-hidden="true">›</span>
+        <span className="breadcrumbs__current">{hotel.name}</span>
+      </nav>
+
+      <div className="hotel-detail__topbar">
+        <div>
+          <h1 className="hotel-detail__name">{hotel.name}</h1>
+          <p className="hotel-detail__address">📍 {hotel.address || hotel.city}</p>
+        </div>
+        <div className="hotel-detail__book">
+          <span className="hotel-detail__price">US${hotel.pricePerNight}</span>
+          <span className="hotel-detail__price-unit">per night</span>
+          <button type="button" className="btn-primary">
+            Reserve
+          </button>
+        </div>
+      </div>
 
       <div className="hotel-detail__gallery">
         <img
           className="hotel-detail__main-image"
           src={activeImage}
           alt={hotel.name}
-          onError={(event) => {
-            event.currentTarget.onerror = null
-            event.currentTarget.src = FALLBACK_IMAGE
-          }}
+          onError={handleImageError}
         />
         {gallery.length > 1 && (
           <div className="hotel-detail__thumbnails">
@@ -57,47 +80,72 @@ function HotelDetail() {
                 }
                 onClick={() => setActiveImage(image)}
               >
-                <img
-                  src={image}
-                  alt=""
-                  onError={(event) => {
-                    event.currentTarget.onerror = null
-                    event.currentTarget.src = FALLBACK_IMAGE
-                  }}
-                />
+                <img src={image} alt="" onError={handleImageError} />
               </button>
             ))}
           </div>
         )}
       </div>
 
-      <div className="hotel-detail__header">
-        <div>
-          <h1 className="hotel-detail__name">{hotel.name}</h1>
-          <p className="hotel-detail__address">{hotel.address || hotel.city}</p>
+      <div className="hotel-detail__columns">
+        <div className="hotel-detail__main">
+          <div className="panel">
+            <p className="hotel-detail__description">
+              {hotel.longDescription || hotel.description}
+            </p>
+          </div>
+
+          {hotel.amenities?.length > 0 && (
+            <div className="panel hotel-detail__amenities">
+              <h2>Most popular facilities</h2>
+              <ul className="hotel-detail__amenities-list">
+                {hotel.amenities.map((amenity) => (
+                  <li key={amenity} className="hotel-detail__amenity">
+                    <span aria-hidden="true">✓</span> {amenity}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-        <div className="hotel-detail__price-box">
-          <span className="hotel-detail__rating">⭐ {Number(hotel.rating || 0).toFixed(1)}</span>
-          <span className="hotel-detail__price">
-            ${hotel.pricePerNight} <span className="hotel-detail__price-unit">/ night</span>
-          </span>
-        </div>
+
+        <aside className="hotel-detail__side">
+          <div className="panel score-panel">
+            <div className="score-panel__row">
+              <span className="score-panel__badge">{rating.toFixed(1)}</span>
+              <div>
+                <p className="score-panel__word">{ratingLabel(rating)}</p>
+                <p className="score-panel__hint">Guest review score</p>
+              </div>
+            </div>
+            <p className="score-panel__note">
+              Guests loved the location and the service at {hotel.name}.
+            </p>
+          </div>
+
+          <div className="panel">
+            <h2>Good to know</h2>
+            <ul className="facts">
+              <li>
+                <span>Check-in</span>
+                <strong>15:00 – 23:00</strong>
+              </li>
+              <li>
+                <span>Check-out</span>
+                <strong>07:00 – 11:00</strong>
+              </li>
+              <li>
+                <span>Cancellation</span>
+                <strong>Free until 24h before</strong>
+              </li>
+            </ul>
+          </div>
+        </aside>
       </div>
 
-      <p className="hotel-detail__description">{hotel.longDescription || hotel.description}</p>
-
-      {hotel.amenities?.length > 0 && (
-        <div className="hotel-detail__amenities">
-          <h2>Amenities</h2>
-          <ul className="hotel-detail__amenities-list">
-            {hotel.amenities.map((amenity) => (
-              <li key={amenity} className="hotel-detail__amenity">
-                {amenity}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <Link className="hotel-detail__back" to="/">
+        ← Back to search results
+      </Link>
     </section>
   )
 }

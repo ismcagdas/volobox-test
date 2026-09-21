@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ratingLabel from '../ratingLabel'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -11,26 +12,51 @@ const FALLBACK_IMAGE =
   )
 
 function HotelCard({ hotel }) {
+  const rating = Number(hotel.rating || 0)
+
   return (
     <li className="hotel-card">
       <Link className="hotel-card__link" to={`/hotels/${hotel.id}`}>
-        <img
-          className="hotel-card__image"
-          src={hotel.imageUrl}
-          alt={hotel.name}
-          loading="lazy"
-          onError={(event) => {
-            event.currentTarget.onerror = null
-            event.currentTarget.src = FALLBACK_IMAGE
-          }}
-        />
+        <div className="hotel-card__media">
+          <img
+            className="hotel-card__image"
+            src={hotel.imageUrl}
+            alt={hotel.name}
+            loading="lazy"
+            onError={(event) => {
+              event.currentTarget.onerror = null
+              event.currentTarget.src = FALLBACK_IMAGE
+            }}
+          />
+        </div>
+
         <div className="hotel-card__body">
           <h3 className="hotel-card__name">{hotel.name}</h3>
           <p className="hotel-card__city">{hotel.city}</p>
           <p className="hotel-card__description">{hotel.description}</p>
-          <div className="hotel-card__footer">
-            <span className="hotel-card__rating">⭐ {Number(hotel.rating || 0).toFixed(1)}</span>
-            <span className="hotel-card__price">${hotel.pricePerNight} / night</span>
+          {hotel.amenities?.length > 0 && (
+            <ul className="hotel-card__tags">
+              {hotel.amenities.slice(0, 3).map((amenity) => (
+                <li key={amenity} className="hotel-card__tag">
+                  {amenity}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="hotel-card__aside">
+          <div className="hotel-card__score">
+            <span className="hotel-card__score-text">
+              <span className="hotel-card__score-word">{ratingLabel(rating)}</span>
+            </span>
+            <span className="hotel-card__score-badge">{rating.toFixed(1)}</span>
+          </div>
+          <div className="hotel-card__price-box">
+            <span className="hotel-card__price-note">1 night</span>
+            <span className="hotel-card__price">US${hotel.pricePerNight}</span>
+            <span className="hotel-card__price-note">Includes taxes and fees</span>
+            <span className="hotel-card__cta">See availability →</span>
           </div>
         </div>
       </Link>
