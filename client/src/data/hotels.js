@@ -5,7 +5,7 @@ const hotels = [
     city: 'New York, USA',
     rating: 4.7,
     pricePerNight: 220,
-    imageUrl: 'https://picsum.photos/seed/hotel1/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1755613708939-d572099433ab?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'A luxurious stay in the heart of Manhattan with skyline views.',
   },
   {
@@ -14,7 +14,7 @@ const hotels = [
     city: 'Malibu, USA',
     rating: 4.5,
     pricePerNight: 310,
-    imageUrl: 'https://picsum.photos/seed/hotel2/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1671798747357-aa4364af0b72?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Beachfront rooms with private balconies and ocean views.',
   },
   {
@@ -23,7 +23,7 @@ const hotels = [
     city: 'Aspen, USA',
     rating: 4.8,
     pricePerNight: 275,
-    imageUrl: 'https://picsum.photos/seed/hotel3/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1739463146961-078f4ac580e3?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Cozy cabins nestled in the mountains, perfect for winter getaways.',
   },
   {
@@ -32,7 +32,7 @@ const hotels = [
     city: 'Chicago, USA',
     rating: 4.1,
     pricePerNight: 150,
-    imageUrl: 'https://picsum.photos/seed/hotel4/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1748324687716-022bec19fe9b?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Affordable comfort within walking distance of downtown attractions.',
   },
   {
@@ -41,7 +41,7 @@ const hotels = [
     city: 'Miami, USA',
     rating: 4.3,
     pricePerNight: 190,
-    imageUrl: 'https://picsum.photos/seed/hotel5/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1783667818798-38903081f98f?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Vibrant hotel with rooftop pool and stunning sunset views.',
   },
   {
@@ -50,7 +50,7 @@ const hotels = [
     city: 'Paris, France',
     rating: 4.6,
     pricePerNight: 260,
-    imageUrl: 'https://picsum.photos/seed/hotel6/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1760281854065-009134a30d7f?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'A charming historic property overlooking the Seine river.',
   },
   {
@@ -59,7 +59,7 @@ const hotels = [
     city: 'Kyoto, Japan',
     rating: 4.9,
     pricePerNight: 340,
-    imageUrl: 'https://picsum.photos/seed/hotel7/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1764445274425-f6bcdd84bbd4?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Traditional Japanese hospitality with tranquil garden views.',
   },
   {
@@ -68,7 +68,7 @@ const hotels = [
     city: 'Dubai, UAE',
     rating: 4.4,
     pricePerNight: 400,
-    imageUrl: 'https://picsum.photos/seed/hotel8/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1764730358483-38395275edb5?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Opulent desert resort with world-class spa and dining.',
   },
   {
@@ -77,7 +77,7 @@ const hotels = [
     city: 'Zurich, Switzerland',
     rating: 4.2,
     pricePerNight: 230,
-    imageUrl: 'https://picsum.photos/seed/hotel9/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1576849480617-10523c79bcfa?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Charming alpine-style hotel with easy access to ski slopes.',
   },
   {
@@ -86,7 +86,7 @@ const hotels = [
     city: 'Sydney, Australia',
     rating: 4.5,
     pricePerNight: 285,
-    imageUrl: 'https://picsum.photos/seed/hotel10/400/250',
+    imageUrl: 'https://images.unsplash.com/photo-1768354402690-9889fb1c9ff2?auto=format&fit=crop&w=400&h=250&q=60',
     description: 'Modern suites with panoramic views of Sydney Harbour.',
   },
 ]
