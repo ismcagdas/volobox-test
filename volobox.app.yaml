@@ -7,6 +7,11 @@ init:
     cwd: client
 
 services:
+  - name: db
+    kind: compose
+    file: docker-compose.preview.yml
+    wait: [postgres, redis]
+    waitTimeoutSeconds: 300
   - name: www
     kind: command
     cwd: client
@@ -15,6 +20,7 @@ services:
     primary: true
     healthcheck: /
     restartPolicy: on-change
+    dependsOn: [db]
 
 completion:
   pauseOn: manual
