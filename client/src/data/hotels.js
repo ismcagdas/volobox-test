@@ -7,10 +7,19 @@ const hotels = [
     rating: 4.7,
     pricePerNight: 220,
     imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plaza%20Hotel%20NYC.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel1/800/500',
-      'https://picsum.photos/seed/hotel1b/800/500',
-      'https://picsum.photos/seed/hotel1c/800/500',
+    rooms: [
+      {
+        caption: 'Deluxe king room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ritz_Carlton%2C_New_York_%288403807280%29.jpg?width=900',
+      },
+      {
+        caption: 'Suite entrance hall',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plaza_Hotel_room%2C_Sept_2017.jpg?width=900',
+      },
+      {
+        caption: 'Suite living room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Suite_-_Living_Room_1.JPG?width=900',
+      },
     ],
     description: 'A luxurious stay in the heart of Manhattan with skyline views.',
     longDescription:
@@ -25,10 +34,19 @@ const hotels = [
     rating: 4.5,
     pricePerNight: 310,
     imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malibu%20Beach%20Panorama.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel2/800/500',
-      'https://picsum.photos/seed/hotel2b/800/500',
-      'https://picsum.photos/seed/hotel2c/800/500',
+    rooms: [
+      {
+        caption: 'Beachfront room with balcony',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/DUNK_-_Beachfront_Room_2nd_Floor_-_LowRes.JPG?width=900',
+      },
+      {
+        caption: 'Junior suite',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Reserve_Junior_Suite_Lagoon_Access_at_Paradisus_by_Meli%C3%A1_Bali.jpg?width=900',
+      },
+      {
+        caption: 'Spa pavilion',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/DL2A_Four_Seasons_Bora_Bora_6.jpg?width=900',
+      },
     ],
     description: 'Beachfront rooms with private balconies and ocean views.',
     longDescription:
@@ -43,10 +61,19 @@ const hotels = [
     rating: 4.8,
     pricePerNight: 275,
     imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Aspen%20Saint%20Regis%20Hotel.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel3/800/500',
-      'https://picsum.photos/seed/hotel3b/800/500',
-      'https://picsum.photos/seed/hotel3c/800/500',
+    rooms: [
+      {
+        caption: 'Fireplace lounge',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/La_Cord%C3%A9e_des_Alpes_Prestige_Suite.jpg?width=900',
+      },
+      {
+        caption: 'Premium king cabin room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tower_premium_king_room.jpg?width=900',
+      },
+      {
+        caption: 'Mountain view room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Le_Mirador_Junior_Suite.jpg?width=900',
+      },
     ],
     description: 'Cozy cabins nestled in the mountains, perfect for winter getaways.',
     longDescription:
@@ -61,10 +88,19 @@ const hotels = [
     rating: 4.1,
     pricePerNight: 150,
     imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Loews%20Hotel%20Tower%20in%20Chicago.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel4/800/500',
-      'https://picsum.photos/seed/hotel4b/800/500',
-      'https://picsum.photos/seed/hotel4c/800/500',
+    rooms: [
+      {
+        caption: 'Standard king room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Room_Chicago_Hilton2.jpg?width=900',
+      },
+      {
+        caption: 'Work desk area',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Room_Chicago_Hilton.jpg?width=900',
+      },
+      {
+        caption: 'Premium room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kimpton_Da_An_Premium_Room.jpg?width=900',
+      },
     ],
     description: 'Affordable comfort within walking distance of downtown attractions.',
     longDescription:
@@ -80,10 +116,19 @@ const hotels = [
     pricePerNight: 190,
     imageUrl:
       'https://commons.wikimedia.org/wiki/Special:FilePath/Cavalier%20South%20Beach%20Hotel%2C%20Miami%20Beach%2C%20Florida.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel5/800/500',
-      'https://picsum.photos/seed/hotel5b/800/500',
-      'https://picsum.photos/seed/hotel5c/800/500',
+    rooms: [
+      {
+        caption: 'South Beach king room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Southbeachhotel-room.jpg?width=900',
+      },
+      {
+        caption: 'Twin room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Puerto_Vallarta%2C_Mexico_%28February_2024%29_-_001.jpg?width=900',
+      },
+      {
+        caption: 'Skyline view room at dusk',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/CrownePlaza_Interior_Melbourne.jpg?width=900',
+      },
     ],
     description: 'Vibrant hotel with rooftop pool and stunning sunset views.',
     longDescription:
@@ -99,10 +144,19 @@ const hotels = [
     pricePerNight: 260,
     imageUrl:
       'https://commons.wikimedia.org/wiki/Special:FilePath/Paris-Notre%20Dame-130-Quai%20de%20Montebello-2017-gje.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel6/800/500',
-      'https://picsum.photos/seed/hotel6b/800/500',
-      'https://picsum.photos/seed/hotel6c/800/500',
+    rooms: [
+      {
+        caption: 'Premier room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Premier_room%2C_The_Peninsula_Paris%2C_4_June_2014.jpg?width=900',
+      },
+      {
+        caption: 'Classic twin room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Du_Louvre_Paris_Room_377.jpg?width=900',
+      },
+      {
+        caption: 'Guest salon',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Le_salon_de_l%27h%C3%B4tel_Yndo.jpg?width=900',
+      },
     ],
     description: 'A charming historic property overlooking the Seine river.',
     longDescription:
@@ -117,10 +171,19 @@ const hotels = [
     rating: 4.9,
     pricePerNight: 340,
     imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tawaraya%20Ryokan%2C%20Kyoto%2001.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel7/800/500',
-      'https://picsum.photos/seed/hotel7b/800/500',
-      'https://picsum.photos/seed/hotel7c/800/500',
+    rooms: [
+      {
+        caption: 'Tatami room with futon',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ryokan_roomIMG_0819C.JPG?width=900',
+      },
+      {
+        caption: 'Low table and tea service',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Interior_of_a_ryokan_room_%282999708441%29.jpg?width=900',
+      },
+      {
+        caption: 'Evening turndown',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Our_room_at_Seikans%C5%8D_Ryokan_%286156061472%29.jpg?width=900',
+      },
     ],
     description: 'Traditional Japanese hospitality with tranquil garden views.',
     longDescription:
@@ -136,10 +199,19 @@ const hotels = [
     pricePerNight: 400,
     imageUrl:
       'https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20Burj%20al%20Arab%20in%20Dubay%202.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel8/800/500',
-      'https://picsum.photos/seed/hotel8b/800/500',
-      'https://picsum.photos/seed/hotel8c/800/500',
+    rooms: [
+      {
+        caption: 'Deluxe twin room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Fairmont_The_Palm_%2811535774794%29.jpg?width=900',
+      },
+      {
+        caption: 'Suite with city view',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Al_Madina_Suite_3_Bedrooms_at_Shaza_Al_Madina.jpg?width=900',
+      },
+      {
+        caption: 'King room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Al_Bustan_Rotana_room.jpg?width=900',
+      },
     ],
     description: 'Opulent desert resort with world-class spa and dining.',
     longDescription:
@@ -155,10 +227,19 @@ const hotels = [
     pricePerNight: 230,
     imageUrl:
       'https://commons.wikimedia.org/wiki/Special:FilePath/Chalet%20Hotel%20Alte%20Post%2C%20Grindelwald.jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel9/800/500',
-      'https://picsum.photos/seed/hotel9b/800/500',
-      'https://picsum.photos/seed/hotel9c/800/500',
+    rooms: [
+      {
+        caption: 'Wood-panelled twin room',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Suiten-Hotel-Rasmushof-Kitzbuehel.jpg?width=900',
+      },
+      {
+        caption: 'Junior suite with Zurich view',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dolder_Grand_Hotel_-_Junior_Suite_mit_Aussicht_auf_Z%C3%BCrich.jpg?width=900',
+      },
+      {
+        caption: 'Junior suite',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dolder_Grand_Hotel_-_Junior_Suite.jpg?width=900',
+      },
     ],
     description: 'Charming alpine-style hotel with easy access to ski slopes.',
     longDescription:
@@ -174,10 +255,19 @@ const hotels = [
     pricePerNight: 285,
     imageUrl:
       'https://commons.wikimedia.org/wiki/Special:FilePath/Sydney%20Harbour%20Bridge%20from%20Circular%20Quay%20(cropped).jpg?width=700',
-    gallery: [
-      'https://picsum.photos/seed/hotel10/800/500',
-      'https://picsum.photos/seed/hotel10b/800/500',
-      'https://picsum.photos/seed/hotel10c/800/500',
+    rooms: [
+      {
+        caption: 'Studio suite',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Room_in_the_Little_National_Hotel_Sydney_March_2023.jpg?width=900',
+      },
+      {
+        caption: 'Apartment suite with kitchenette',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Room_at_Adina_Apartment_Hotel_Sydney_Airport%2C_01.jpg?width=900',
+      },
+      {
+        caption: 'Deluxe suite bedroom',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Deluxe_Suite_bedroom.jpg?width=900',
+      },
     ],
     description: 'Modern suites with panoramic views of Sydney Harbour.',
     longDescription:
