@@ -66,7 +66,7 @@ function HotelList() {
       <section className="hero">
         <div className="hero__inner">
           <h1 className="hero__title">Find your next stay</h1>
-          <p className="hero__subtitle">Search low prices on hotels, homes and much more…</p>
+          <p className="hero__subtitle">Search low prices on hotels, apartments and much more…</p>
           <div className="searchbar">
             <label className="searchbar__field" htmlFor="hotel-search-input">
               <span className="searchbar__icon" aria-hidden="true">
