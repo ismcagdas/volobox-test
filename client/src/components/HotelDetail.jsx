@@ -21,8 +21,11 @@ const handleImageError = (event) => {
 function HotelDetail() {
   const { id } = useParams()
   const hotel = hotels.find((item) => String(item.id) === id)
-  const gallery = hotel?.gallery?.length ? hotel.gallery : hotel ? [hotel.imageUrl] : []
-  const [activeImage, setActiveImage] = useState(gallery[0])
+  const gallery = hotel
+    ? [{ url: hotel.imageUrl, caption: 'The hotel' }, ...(hotel.rooms || [])]
+    : []
+  const [activeUrl, setActiveUrl] = useState(gallery[0]?.url)
+  const active = gallery.find((image) => image.url === activeUrl) || gallery[0]
 
   if (!hotel) {
     return (
@@ -62,25 +65,31 @@ function HotelDetail() {
       </div>
 
       <div className="hotel-detail__gallery">
-        <img
-          className="hotel-detail__main-image"
-          src={activeImage}
-          alt={hotel.name}
-          onError={handleImageError}
-        />
+        <figure className="hotel-detail__figure">
+          <img
+            className="hotel-detail__main-image"
+            src={active.url}
+            alt={`${hotel.name} — ${active.caption}`}
+            onError={handleImageError}
+          />
+          <figcaption className="hotel-detail__caption">{active.caption}</figcaption>
+        </figure>
         {gallery.length > 1 && (
           <div className="hotel-detail__thumbnails">
             {gallery.map((image) => (
               <button
-                key={image}
+                key={image.url}
                 type="button"
+                title={image.caption}
+                aria-label={image.caption}
+                aria-pressed={image.url === active.url}
                 className={
                   'hotel-detail__thumbnail' +
-                  (image === activeImage ? ' hotel-detail__thumbnail--active' : '')
+                  (image.url === active.url ? ' hotel-detail__thumbnail--active' : '')
                 }
-                onClick={() => setActiveImage(image)}
+                onClick={() => setActiveUrl(image.url)}
               >
-                <img src={image} alt="" onError={handleImageError} />
+                <img src={image.url} alt="" loading="lazy" onError={handleImageError} />
               </button>
             ))}
           </div>
