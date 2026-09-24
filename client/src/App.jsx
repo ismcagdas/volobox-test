@@ -11,7 +11,7 @@ function App() {
       <header className="site-header">
         <div className="site-header__inner">
           <Link to="/" className="site-header__logo">
-            HotelBox
+            MotelBox
           </Link>
           <nav className="site-header__actions">
             <button type="button" className="site-header__ghost">
@@ -50,7 +50,7 @@ function App() {
       </main>
       <footer className="site-footer">
         <div className="site-footer__inner">
-          <p>HotelBox — find your next stay.</p>
+          <p>MotelBox — find your next stay.</p>
         </div>
       </footer>
     </BrowserRouter>
