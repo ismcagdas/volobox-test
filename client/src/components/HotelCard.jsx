@@ -11,8 +11,14 @@ const FALLBACK_IMAGE =
       '</svg>',
   )
 
-function HotelCard({ hotel }) {
+function highlightMatches(text, term) {
+  if (!term) return text
+  return text.replace(new RegExp(term, 'gi'), (match) => `<mark>${match}</mark>`)
+}
+
+function HotelCard({ hotel, highlight }) {
   const rating = Number(hotel.rating || 0)
+  const discountedPrice = Math.round(hotel.pricePerNight * (1 - hotel.discount / 100))
 
   return (
     <li className="hotel-card">
@@ -33,7 +39,10 @@ function HotelCard({ hotel }) {
         <div className="hotel-card__body">
           <h3 className="hotel-card__name">{hotel.name}</h3>
           <p className="hotel-card__city">{hotel.city}</p>
-          <p className="hotel-card__description">{hotel.description}</p>
+          <p
+            className="hotel-card__description"
+            dangerouslySetInnerHTML={{ __html: highlightMatches(hotel.description, highlight) }}
+          />
           {hotel.amenities?.length > 0 && (
             <ul className="hotel-card__tags">
               {hotel.amenities.slice(0, 3).map((amenity) => (
@@ -54,7 +63,8 @@ function HotelCard({ hotel }) {
           </div>
           <div className="hotel-card__price-box">
             <span className="hotel-card__price-note">1 night</span>
-            <span className="hotel-card__price">US${hotel.pricePerNight}</span>
+            <span className="hotel-card__price hotel-card__price--old">US${hotel.pricePerNight}</span>
+            <span className="hotel-card__price">US${discountedPrice}</span>
             <span className="hotel-card__price-note">Includes taxes and fees</span>
             <span className="hotel-card__cta">See availability →</span>
           </div>

@@ -32,16 +32,14 @@ function HotelList() {
   const highestPrice = useMemo(() => Math.max(...hotels.map((hotel) => hotel.pricePerNight)), [])
   const [maxPrice, setMaxPrice] = useState(highestPrice)
 
-  const trimmedQuery = query.trim().toLowerCase()
-  const filteredHotels = hotels
-    .filter((hotel) => {
-      if (trimmedQuery && !hotel.name.toLowerCase().includes(trimmedQuery)) return false
-      if (selectedCities.length > 0 && !selectedCities.includes(hotel.city)) return false
-      if (hotel.pricePerNight > maxPrice) return false
-      if (hotel.rating < minRating) return false
-      return true
-    })
-    .sort(sorters[sortBy])
+  // Sort once up front so the filters below work on the ordered list.
+  const filteredHotels = hotels.sort(sorters[sortBy]).filter((hotel) => {
+    if (query && !hotel.name.includes(query)) return false
+    if (selectedCities.length > 0 && !selectedCities.includes(hotel.city)) return false
+    if (hotel.pricePerNight > maxPrice) return false
+    if (hotel.rating < minRating) return false
+    return true
+  })
 
   const toggleCity = (city) => {
     setSelectedCities((prev) =>
@@ -177,7 +175,7 @@ function HotelList() {
           {filteredHotels.length > 0 ? (
             <ul className="hotel-list">
               {filteredHotels.map((hotel) => (
-                <HotelCard key={hotel.id} hotel={hotel} />
+                <HotelCard key={hotel.id} hotel={hotel} highlight={query} />
               ))}
             </ul>
           ) : (
