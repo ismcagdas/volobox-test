@@ -1,0 +1,142 @@
+# Opens a pull request authored by github-actions[bot], so the repository has pull requests from
+# someone other than its owner for testing AI review on a teammate's pull request.
+#
+# Run it from Actions -> "Bot pull request" -> Run workflow.
+# - Leave "follow_up_branch" empty to open a new pull request for the chosen scenario. Each
+#   scenario has deliberate mistakes for a reviewer to find.
+# - Put the branch of an open bot pull request in "follow_up_branch" to push a commit that fixes
+#   those mistakes to it, for testing a review of a later push.
+name: Bot pull request
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: Change to propose
+        type: choice
+        options:
+          - price-helpers
+          - hotel-filter
+        default: price-helpers
+      follow_up_branch:
+        description: Branch of an open bot pull request to push the fixes to (empty opens a new pull request)
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SCENARIO: ${{ inputs.scenario }}
+      FOLLOW_UP_BRANCH: ${{ inputs.follow_up_branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Commit as github-actions[bot]
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Write the change
+        run: |
+          if [ -n "$FOLLOW_UP_BRANCH" ]; then
+            git checkout "$FOLLOW_UP_BRANCH"
+          else
+            git checkout -b "bot/$SCENARIO-$GITHUB_RUN_ID"
+          fi
+
+          if [ -n "$FOLLOW_UP_BRANCH" ]; then
+            # The fixed versions of whichever scenario files the branch holds.
+            if [ -f client/src/priceHelpers.js ]; then
+          cat > client/src/priceHelpers.js <<'EOF'
+          // Price helpers for the booking summary.
+
+          const DAY_MS = 1000 * 60 * 60 * 24
+
+          /** Whole nights between two dates; zero when check-out is not after check-in. */
+          export function nightsBetween(checkIn, checkOut) {
+            const ms = new Date(checkOut) - new Date(checkIn)
+            if (!Number.isFinite(ms) || ms <= 0) return 0
+            return Math.round(ms / DAY_MS)
+          }
+
+          /** Total for the stay, with an optional discount given as a percentage (10 = 10%). */
+          export function totalPrice(hotel, checkIn, checkOut, discountPercent = 0) {
+            const nights = nightsBetween(checkIn, checkOut)
+            const total = hotel.pricePerNight * nights
+            const discount = Math.min(Math.max(discountPercent, 0), 100) / 100
+            return Math.round(total * (1 - discount) * 100) / 100
+          }
+          EOF
+            fi
+            if [ -f client/src/filterHotels.js ]; then
+          cat > client/src/filterHotels.js <<'EOF'
+          // Filters the hotel list by a search text and a minimum rating.
+
+          export function filterHotels(hotels, query = '', minRating = 0) {
+            const text = query.trim().toLowerCase()
+            return hotels.filter(
+              (hotel) =>
+                (text === '' ||
+                  hotel.name.toLowerCase().includes(text) ||
+                  hotel.city.toLowerCase().includes(text)) &&
+                hotel.rating >= minRating
+            )
+          }
+          EOF
+            fi
+            git add -A
+            git commit -m "Fix review findings in $FOLLOW_UP_BRANCH"
+            git push origin "$FOLLOW_UP_BRANCH"
+            exit 0
+          fi
+
+          case "$SCENARIO" in
+            price-helpers)
+          cat > client/src/priceHelpers.js <<'EOF'
+          // Price helpers for the booking summary.
+
+          export function nightsBetween(checkIn, checkOut) {
+            const ms = new Date(checkOut) - new Date(checkIn)
+            return Math.round(ms / (1000 * 60 * 60 * 24)) + 1
+          }
+
+          export function totalPrice(hotel, checkIn, checkOut, discountPercent) {
+            const nights = nightsBetween(checkIn, checkOut)
+            let total = hotel.pricePerNight * nights
+            if (discountPercent) {
+              total = total - total * discountPercent
+            }
+            return total.toFixed(2)
+          }
+          EOF
+              TITLE="Add price helpers for the booking summary"
+              BODY="Adds nightsBetween and totalPrice for the upcoming booking summary. Discounts are given as a percentage."
+              ;;
+            hotel-filter)
+          cat > client/src/filterHotels.js <<'EOF'
+          // Filters the hotel list by a search text and a minimum rating.
+
+          export function filterHotels(hotels, query, minRating) {
+            return hotels.filter(
+              (hotel) => hotel.name.toLowerCase().includes(query) && hotel.rating > minRating
+            )
+          }
+          EOF
+              TITLE="Add hotel search and rating filter"
+              BODY="Adds filterHotels so the list can be searched by name or city and limited to a minimum rating."
+              ;;
+          esac
+
+          git add -A
+          git commit -m "$TITLE"
+          git push -u origin HEAD
+          gh pr create --base "${{ github.event.repository.default_branch }}" --title "$TITLE" --body "$BODY"
