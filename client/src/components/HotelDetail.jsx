@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import hotels from '../data/hotels'
 import ratingLabel from '../ratingLabel'
+import SuperbBadge from './SuperbBadge'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -123,7 +124,9 @@ function HotelDetail() {
             <div className="score-panel__row">
               <span className="score-panel__badge">{rating.toFixed(1)}</span>
               <div>
-                <p className="score-panel__word">{ratingLabel(rating)}</p>
+                <p className="score-panel__word">
+                  {ratingLabel(rating)} <SuperbBadge rating={rating} />
+                </p>
                 <p className="score-panel__hint">Guest review score</p>
               </div>
             </div>

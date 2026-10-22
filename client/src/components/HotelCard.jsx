@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ratingLabel from '../ratingLabel'
+import SuperbBadge from './SuperbBadge'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -49,6 +50,7 @@ function HotelCard({ hotel }) {
           <div className="hotel-card__score">
             <span className="hotel-card__score-text">
               <span className="hotel-card__score-word">{ratingLabel(rating)}</span>
+              <SuperbBadge rating={rating} />
             </span>
             <span className="hotel-card__score-badge">{rating.toFixed(1)}</span>
           </div>
