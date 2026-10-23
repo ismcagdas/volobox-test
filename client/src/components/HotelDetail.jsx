@@ -39,6 +39,7 @@ function HotelDetail() {
   }
 
   const rating = Number(hotel.rating || 0)
+  const label = ratingLabel(rating)
 
   return (
     <section className="hotel-detail-section">
@@ -123,7 +124,9 @@ function HotelDetail() {
             <div className="score-panel__row">
               <span className="score-panel__badge">{rating.toFixed(1)}</span>
               <div>
-                <p className="score-panel__word">{ratingLabel(rating)}</p>
+                <p className={`score-panel__word${label === 'Superb' ? ' is-superb' : ''}`}>
+                  {label}
+                </p>
                 <p className="score-panel__hint">Guest review score</p>
               </div>
             </div>

@@ -13,6 +13,7 @@ const FALLBACK_IMAGE =
 
 function HotelCard({ hotel }) {
   const rating = Number(hotel.rating || 0)
+  const label = ratingLabel(rating)
 
   return (
     <li className="hotel-card">
@@ -48,7 +49,11 @@ function HotelCard({ hotel }) {
         <div className="hotel-card__aside">
           <div className="hotel-card__score">
             <span className="hotel-card__score-text">
-              <span className="hotel-card__score-word">{ratingLabel(rating)}</span>
+              <span
+                className={`hotel-card__score-word${label === 'Superb' ? ' is-superb' : ''}`}
+              >
+                {label}
+              </span>
             </span>
             <span className="hotel-card__score-badge">{rating.toFixed(1)}</span>
           </div>

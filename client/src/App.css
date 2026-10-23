@@ -838,6 +838,11 @@
   color: var(--text-h);
 }
 
+.hotel-card__score-word.is-superb,
+.score-panel__word.is-superb {
+  color: #d4a63a; /* pastel golden yellow */
+}
+
 .score-panel__hint,
 .score-panel__note {
   font-size: 12px;
