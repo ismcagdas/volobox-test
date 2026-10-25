@@ -52,7 +52,7 @@ function HotelCard({ hotel }) {
             </span>
             <span
               className="hotel-card__score-badge"
-              style={{ background: ratingColor(rating) }}
+              style={rating > 0 ? { background: ratingColor(rating) } : undefined}
             >
               {rating.toFixed(1)}
             </span>
