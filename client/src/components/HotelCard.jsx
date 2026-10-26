@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import ratingLabel, { ratingColor } from '../ratingLabel'
+import ratingLabel, { ratingColor, ratingTextColor } from '../ratingLabel'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -52,7 +52,10 @@ function HotelCard({ hotel }) {
             </span>
             <span
               className="hotel-card__score-badge"
-              style={{ background: ratingColor(rating) }}
+              style={{
+                background: ratingColor(rating),
+                color: ratingTextColor(rating),
+              }}
             >
               {rating.toFixed(1)}
             </span>
