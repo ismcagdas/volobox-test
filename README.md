@@ -1,4 +1,4 @@
-# Volobox Hotels
+# Volbox Hotels
 
 We use AI for development of this project
 
