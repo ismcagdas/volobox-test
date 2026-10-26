@@ -10,7 +10,7 @@ Uygulama React ve Vite ile yazılmıştır. Oteller `client/src/data/hotels.js` 
 
 Her otel kartında şunlar yer alır:
 
-- Fotoğraf (yüklenemazse yedek görsel)
+- Fotoğraf (yüklenemezse yedek görsel)
 - Otel adı ve şehir
 - Kısa açıklama
 - Puan
