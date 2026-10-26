@@ -21,9 +21,9 @@ export function ratingColor(rating) {
   return `hsl(0, 75%, ${lightness.toFixed(0)}%)`
 }
 
-// White text is unreadable on the gold tier, so it gets dark text instead.
+// Gold-tier badges (4.0–4.2), including the homepage 4.1 score, use white text.
 export function ratingTextColor(rating) {
-  return rating >= 4 && rating < 4.2 ? '#2b2000' : undefined
+  return rating >= 4 && rating < 4.2 ? '#fff' : undefined
 }
 
 export default ratingLabel
