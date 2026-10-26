@@ -8,6 +8,21 @@ const RATING_OPTIONS = [
   { label: 'Wonderful: 4.5+', value: 4.5 },
 ]
 
+// Hotel amenities are free-form strings, so group the common ones into
+// filterable categories. A hotel matches a category if any amenity matches.
+const AMENITY_FILTERS = [
+  { id: 'wifi', label: 'Free Wi-Fi', pattern: /wi-?fi/i },
+  { id: 'parking', label: 'Parking', pattern: /parking/i },
+  { id: 'pool', label: 'Pool', pattern: /pool/i },
+  { id: 'spa', label: 'Spa & wellness', pattern: /\bspa\b|sauna|hot tub|onsen/i },
+  { id: 'fitness', label: 'Fitness center', pattern: /\bgym\b|fitness/i },
+  { id: 'breakfast', label: 'Breakfast', pattern: /breakfast/i },
+  { id: 'beach', label: 'Beach access', pattern: /beach/i },
+  { id: 'pets', label: 'Pet friendly', pattern: /pet friendly/i },
+]
+
+const hasAmenity = (hotel, filter) => hotel.amenities.some((item) => filter.pattern.test(item))
+
 const SORT_OPTIONS = [
   { label: 'Our top picks', value: 'top' },
   { label: 'Price (lowest first)', value: 'price-asc' },
@@ -26,11 +41,16 @@ function HotelList() {
   const [query, setQuery] = useState('')
   const [selectedCities, setSelectedCities] = useState([])
   const [minRating, setMinRating] = useState(0)
+  const [selectedAmenities, setSelectedAmenities] = useState([])
   const [sortBy, setSortBy] = useState('top')
 
   const cities = useMemo(() => Array.from(new Set(hotels.map((hotel) => hotel.city))).sort(), [])
   const highestPrice = useMemo(() => Math.max(...hotels.map((hotel) => hotel.pricePerNight)), [])
   const [maxPrice, setMaxPrice] = useState(highestPrice)
+
+  const activeAmenityFilters = AMENITY_FILTERS.filter((filter) =>
+    selectedAmenities.includes(filter.id),
+  )
 
   const trimmedQuery = query.trim().toLowerCase()
   const filteredHotels = hotels
@@ -39,6 +59,7 @@ function HotelList() {
       if (selectedCities.length > 0 && !selectedCities.includes(hotel.city)) return false
       if (hotel.pricePerNight > maxPrice) return false
       if (hotel.rating < minRating) return false
+      if (activeAmenityFilters.some((filter) => !hasAmenity(hotel, filter))) return false
       return true
     })
     .sort(sorters[sortBy])
@@ -49,17 +70,29 @@ function HotelList() {
     )
   }
 
+  const toggleAmenity = (id) => {
+    setSelectedAmenities((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    )
+  }
+
   const hasActiveFilters =
-    query !== '' || selectedCities.length > 0 || maxPrice !== highestPrice || minRating !== 0
+    query !== '' ||
+    selectedCities.length > 0 ||
+    maxPrice !== highestPrice ||
+    minRating !== 0 ||
+    selectedAmenities.length > 0
 
   const resetFilters = () => {
     setQuery('')
     setSelectedCities([])
     setMaxPrice(highestPrice)
     setMinRating(0)
+    setSelectedAmenities([])
   }
 
   const countFor = (city) => hotels.filter((hotel) => hotel.city === city).length
+  const amenityCount = (filter) => hotels.filter((hotel) => hasAmenity(hotel, filter)).length
 
   return (
     <>
@@ -143,6 +176,23 @@ function HotelList() {
                     onChange={() => setMinRating(option.value)}
                   />
                   <span className="hotel-filters__label">{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="hotel-filters__group">
+            <h3 className="hotel-filters__title">Amenities</h3>
+            <div className="hotel-filters__options">
+              {AMENITY_FILTERS.map((filter) => (
+                <label key={filter.id} className="hotel-filters__checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedAmenities.includes(filter.id)}
+                    onChange={() => toggleAmenity(filter.id)}
+                  />
+                  <span className="hotel-filters__label">{filter.label}</span>
+                  <span className="hotel-filters__count">{amenityCount(filter)}</span>
                 </label>
               ))}
             </div>
