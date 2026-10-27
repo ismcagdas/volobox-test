@@ -101,6 +101,9 @@
 }
 
 .site-nav__tab {
+  display: inline-block;
+  text-decoration: none;
+  font-family: inherit;
   background: none;
   border: 1px solid transparent;
   color: var(--on-dark-muted);
