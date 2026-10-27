@@ -1,9 +1,12 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
 import HotelList from './components/HotelList'
 import HotelDetail from './components/HotelDetail'
+import RestaurantList from './components/RestaurantList'
 import './App.css'
 
-const NAV_TABS = ['Stays', 'Flights', 'Car rentals', 'Attractions', 'Airport taxis']
+const NAV_TABS = ['Flights', 'Car rentals', 'Attractions', 'Airport taxis']
+
+const tabClass = ({ isActive }) => 'site-nav__tab' + (isActive ? ' site-nav__tab--active' : '')
 
 function App() {
   return (
@@ -30,12 +33,14 @@ function App() {
         </div>
         <div className="site-nav">
           <div className="site-nav__inner">
-            {NAV_TABS.map((tab, index) => (
-              <button
-                key={tab}
-                type="button"
-                className={'site-nav__tab' + (index === 0 ? ' site-nav__tab--active' : '')}
-              >
+            <NavLink to="/" end className={tabClass}>
+              Stays
+            </NavLink>
+            <NavLink to="/restaurants" className={tabClass}>
+              Restaurants
+            </NavLink>
+            {NAV_TABS.map((tab) => (
+              <button key={tab} type="button" className="site-nav__tab">
                 {tab}
               </button>
             ))}
@@ -46,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HotelList />} />
           <Route path="/hotels/:id" element={<HotelDetail />} />
+          <Route path="/restaurants" element={<RestaurantList />} />
         </Routes>
       </main>
       <footer className="site-footer">
