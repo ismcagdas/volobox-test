@@ -1,6 +1,15 @@
 import restaurants from '../data/restaurants'
 import ratingLabel, { ratingColor, ratingTextColor } from '../ratingLabel'
 
+// Country is the part of `city` after the comma: 'New York, USA' -> 'USA'.
+// Returns null when there is no comma, so no tag is shown.
+function countryFromCity(city) {
+  const commaIndex = city.indexOf(',')
+  if (commaIndex === -1) return null
+  const country = city.slice(commaIndex + 1).trim()
+  return country || null
+}
+
 function RestaurantList() {
   return (
     <div className="hotel-page">
@@ -22,6 +31,9 @@ function RestaurantList() {
                   <ul className="hotel-card__tags">
                     <li className="hotel-card__tag">{restaurant.cuisine}</li>
                     <li className="hotel-card__tag">{restaurant.priceRange}</li>
+                    {countryFromCity(restaurant.city) && (
+                      <li className="hotel-card__tag">{countryFromCity(restaurant.city)}</li>
+                    )}
                   </ul>
                 </div>
                 <div className="hotel-card__aside">
