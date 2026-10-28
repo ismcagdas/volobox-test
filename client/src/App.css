@@ -473,6 +473,11 @@
   gap: 16px;
 }
 
+/* Restaurant cards have no media column: body + rating aside only */
+.hotel-card__link--restaurant {
+  grid-template-columns: 1fr 200px;
+}
+
 .hotel-card__media {
   border-radius: var(--radius-sm);
   overflow: hidden;

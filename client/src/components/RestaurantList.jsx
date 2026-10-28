@@ -21,7 +21,7 @@ function RestaurantList() {
         <ul className="hotel-list">
           {restaurants.map((restaurant) => (
             <li key={restaurant.id} className="hotel-card">
-              <div className="hotel-card__link">
+              <div className="hotel-card__link hotel-card__link--restaurant">
                 <div className="hotel-card__body">
                   <h3 className="hotel-card__name">{restaurant.name}</h3>
                   <p className="hotel-card__city">{restaurant.city}</p>
