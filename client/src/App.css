@@ -621,6 +621,11 @@
     flex-direction: row;
     align-items: flex-end;
   }
+
+  /* Single rating block: keep it on the right edge in the row layout */
+  .hotel-card__link--restaurant .hotel-card__aside {
+    justify-content: flex-end;
+  }
 }
 
 /* ---------- detail page ---------- */
