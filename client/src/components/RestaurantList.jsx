@@ -5,7 +5,7 @@ import ratingLabel, { ratingColor, ratingTextColor } from '../ratingLabel'
 function RestaurantList() {
   const [onlyTopRated, setOnlyTopRated] = useState(false)
   const visibleRestaurants = onlyTopRated
-    ? restaurants.filter((restaurant) => restaurant.rating > 4.5)
+    ? restaurants.filter((restaurant) => restaurant.rating >= 4.5)
     : restaurants
 
   return (
