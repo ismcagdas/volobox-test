@@ -1,18 +1,32 @@
+import { useState } from 'react'
 import restaurants from '../data/restaurants'
 import ratingLabel, { ratingColor, ratingTextColor } from '../ratingLabel'
 
 function RestaurantList() {
+  const [onlyTopRated, setOnlyTopRated] = useState(false)
+  const visibleRestaurants = onlyTopRated
+    ? restaurants.filter((restaurant) => restaurant.rating > 4.5)
+    : restaurants
+
   return (
     <div className="hotel-page">
       <section className="hotel-list-section">
         <div className="hotel-list-head">
           <h1 className="hotel-list-title">
-            Restaurants: <span>{restaurants.length} restaurants found</span>
+            Restaurants: <span>{visibleRestaurants.length} restaurants found</span>
           </h1>
+          <label>
+            <input
+              type="checkbox"
+              checked={onlyTopRated}
+              onChange={(event) => setOnlyTopRated(event.target.checked)}
+            />{' '}
+            Sadece 4.5 ve üzeri
+          </label>
         </div>
 
         <ul className="hotel-list">
-          {restaurants.map((restaurant) => (
+          {visibleRestaurants.map((restaurant) => (
             <li key={restaurant.id} className="hotel-card">
               <div className="hotel-card__link">
                 <div className="hotel-card__body">
