@@ -29,6 +29,14 @@ function RestaurantList() {
           {visibleRestaurants.map((restaurant) => (
             <li key={restaurant.id} className="hotel-card">
               <div className="hotel-card__link">
+                <div className="hotel-card__media">
+                  <img
+                    className="hotel-card__image"
+                    src={restaurant.imageUrl}
+                    alt={restaurant.name}
+                    loading="lazy"
+                  />
+                </div>
                 <div className="hotel-card__body">
                   <h3 className="hotel-card__name">{restaurant.name}</h3>
                   <p className="hotel-card__city">{restaurant.city}</p>
