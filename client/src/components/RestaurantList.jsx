@@ -41,7 +41,7 @@ function RestaurantList() {
               <div className="hotel-card__link">
                 <div className="hotel-card__media">
                   <img
-                    className="hotel-card__image"
+                    className="hotel-card__image hotel-card__image--fixed"
                     src={restaurant.imageUrl}
                     alt={restaurant.name}
                     loading="lazy"

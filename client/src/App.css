@@ -486,6 +486,11 @@
   display: block;
 }
 
+.hotel-card__image--fixed {
+  height: 190px;
+  min-height: 0;
+}
+
 .hotel-card__body {
   display: flex;
   flex-direction: column;
