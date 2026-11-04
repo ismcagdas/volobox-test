@@ -603,8 +603,13 @@
   background: var(--accent-hover);
 }
 
+.hotel-card__link--no-media {
+  grid-template-columns: 1fr 200px;
+}
+
 @media (max-width: 760px) {
-  .hotel-card__link {
+  .hotel-card__link,
+  .hotel-card__link--no-media {
     grid-template-columns: 1fr;
   }
 

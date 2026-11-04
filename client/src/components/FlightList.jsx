@@ -13,7 +13,7 @@ function FlightList() {
         <ul className="hotel-list">
           {flights.map((flight) => (
             <li key={flight.id} className="hotel-card">
-              <div className="hotel-card__link">
+              <div className="hotel-card__link hotel-card__link--no-media">
                 <div className="hotel-card__body">
                   <h3 className="hotel-card__name">
                     {flight.from} → {flight.to}
