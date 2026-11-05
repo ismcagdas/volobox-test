@@ -900,3 +900,25 @@
   font-size: 13px;
   box-sizing: border-box;
 }
+
+/* ---------- flights ---------- */
+
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 8px 0;
+}
+
+.flight-arrow {
+  font-size: 16px;
+  color: var(--accent);
+}
+
+.flight-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
