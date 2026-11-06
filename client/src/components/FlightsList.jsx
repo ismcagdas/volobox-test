@@ -42,7 +42,7 @@ function FlightsList() {
                     <li className="hotel-card__tag">{flight.seats} seats left</li>
                   </ul>
                 </div>
-                <div className="hotel-card__aside">
+                <div className="hotel-card__aside" style={{ marginLeft: 'auto' }}>
                   <div className="hotel-card__score">
                     <span className="hotel-card__score-text">
                       <span className="hotel-card__score-word">{ratingLabel(flight.rating)}</span>
