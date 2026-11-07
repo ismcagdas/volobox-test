@@ -623,6 +623,90 @@
   }
 }
 
+/* ---------- flight cards ---------- */
+
+.flight-card {
+  display: grid;
+  grid-template-columns: 180px 1fr 160px;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.flight-card__airline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flight-card__logo {
+  width: 120px;
+  height: 40px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.flight-card__airline-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.flight-card__number {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.flight-card__route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.flight-card__point {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flight-card__point--end {
+  text-align: right;
+}
+
+.flight-card__time {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.flight-card__place {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.flight-card__duration {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.flight-card__line {
+  width: 100%;
+  height: 2px;
+  background: var(--border-strong);
+}
+
+@media (max-width: 760px) {
+  .flight-card {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- detail page ---------- */
 
 .hotel-detail-section {
