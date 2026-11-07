@@ -8,7 +8,7 @@ const flights = [
     price: '$245',
     duration: '4h 30m',
     departure: '08:00',
-    arrival: '10:30',
+    arrival: '09:30',
   },
   {
     id: 2,
