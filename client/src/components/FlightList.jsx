@@ -1,4 +1,5 @@
 import flights from '../data/flights'
+import { formatTo12Hour } from '../utils/timeFormat'
 
 function FlightList() {
   return (
@@ -30,11 +31,11 @@ function FlightList() {
                   </div>
                   <div className="flight-card__times">
                     <span className="flight-card__time">
-                      <strong>{flight.departureTime}</strong>
+                      <strong>{formatTo12Hour(flight.departureTime)}</strong>
                     </span>
                     <span className="flight-card__time-arrow">→</span>
                     <span className="flight-card__time">
-                      <strong>{flight.arrivalTime}</strong>
+                      <strong>{formatTo12Hour(flight.arrivalTime)}</strong>
                     </span>
                   </div>
                   <p className="flight-card__airline">{flight.airline}</p>
