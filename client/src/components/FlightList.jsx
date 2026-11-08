@@ -28,6 +28,15 @@ function FlightList() {
                     <span className="flight-card__arrow">→</span>
                     <span className="flight-card__airport">{flight.to}</span>
                   </div>
+                  <div className="flight-card__times">
+                    <span className="flight-card__time">
+                      <strong>{flight.departureTime}</strong>
+                    </span>
+                    <span className="flight-card__time-arrow">→</span>
+                    <span className="flight-card__time">
+                      <strong>{flight.arrivalTime}</strong>
+                    </span>
+                  </div>
                   <p className="flight-card__airline">{flight.airline}</p>
                 </div>
                 <div className="flight-card__price">
