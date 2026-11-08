@@ -885,6 +885,123 @@
   text-decoration: underline;
 }
 
+/* ---------- flight list ---------- */
+
+.flight-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.flight-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.flight-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.flight-card__content {
+  display: grid;
+  grid-template-columns: 80px 1fr 150px;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+}
+
+.flight-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  padding: 12px;
+  height: 80px;
+}
+
+.flight-card__airline-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.flight-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.flight-card__route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.flight-card__airport {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flight-card__arrow {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+}
+
+.flight-card__airline {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.flight-card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+}
+
+.flight-card__price-value {
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-h);
+}
+
+@media (max-width: 760px) {
+  .flight-card__content {
+    grid-template-columns: 70px 1fr;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .flight-card__logo {
+    height: 70px;
+  }
+
+  .flight-card__price {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {

@@ -1,0 +1,58 @@
+const flights = [
+  {
+    id: 1,
+    from: 'Istanbul (IST)',
+    to: 'New York (JFK)',
+    airline: 'Turkish Airlines',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Turkish_Airlines_logo.svg/200px-Turkish_Airlines_logo.svg.png',
+    price: 450,
+    currency: 'USD',
+  },
+  {
+    id: 2,
+    from: 'Istanbul (IST)',
+    to: 'London (LHR)',
+    airline: 'Lufthansa',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Lufthansa_Logo.svg/200px-Lufthansa_Logo.svg.png',
+    price: 280,
+    currency: 'USD',
+  },
+  {
+    id: 3,
+    from: 'Istanbul (IST)',
+    to: 'Paris (CDG)',
+    airline: 'Air France',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Air_France_Logo.svg/200px-Air_France_Logo.svg.png',
+    price: 250,
+    currency: 'USD',
+  },
+  {
+    id: 4,
+    from: 'Istanbul (IST)',
+    to: 'Dubai (DXB)',
+    airline: 'Emirates',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Emirates_logo.svg/200px-Emirates_logo.svg.png',
+    price: 320,
+    currency: 'USD',
+  },
+  {
+    id: 5,
+    from: 'Istanbul (IST)',
+    to: 'Tokyo (NRT)',
+    airline: 'ANA (All Nippon Airways)',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/ANA_Flying_Hanu_Logo.svg/200px-ANA_Flying_Hanu_Logo.svg.png',
+    price: 680,
+    currency: 'USD',
+  },
+  {
+    id: 6,
+    from: 'Istanbul (IST)',
+    to: 'Singapore (SIN)',
+    airline: 'Singapore Airlines',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Singapore_Airlines_Logo.svg/200px-Singapore_Airlines_Logo.svg.png',
+    price: 580,
+    currency: 'USD',
+  },
+]
+
+export default flights
