@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
 import HotelList from './components/HotelList'
 import HotelDetail from './components/HotelDetail'
 import RestaurantList from './components/RestaurantList'
+import FlightList from './components/FlightList'
 import './App.css'
 
-const NAV_TABS = ['Flights', 'Car rentals', 'Attractions', 'Airport taxis']
+const NAV_TABS = ['Car rentals', 'Attractions', 'Airport taxis']
 
 const tabClass = ({ isActive }) => 'site-nav__tab' + (isActive ? ' site-nav__tab--active' : '')
 
@@ -39,6 +40,9 @@ function App() {
             <NavLink to="/restaurants" className={tabClass}>
               Restaurants
             </NavLink>
+            <NavLink to="/flights" className={tabClass}>
+              Flights
+            </NavLink>
             {NAV_TABS.map((tab) => (
               <button key={tab} type="button" className="site-nav__tab">
                 {tab}
@@ -52,6 +56,7 @@ function App() {
           <Route path="/" element={<HotelList />} />
           <Route path="/hotels/:id" element={<HotelDetail />} />
           <Route path="/restaurants" element={<RestaurantList />} />
+          <Route path="/flights" element={<FlightList />} />
         </Routes>
       </main>
       <footer className="site-footer">

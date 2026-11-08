@@ -1,0 +1,58 @@
+const flights = [
+  {
+    id: 1,
+    from: 'Istanbul (IST)',
+    to: 'New York (JFK)',
+    airline: 'Turkish Airlines',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/turkishairlines.svg',
+    price: 450,
+    currency: 'USD',
+  },
+  {
+    id: 2,
+    from: 'Istanbul (IST)',
+    to: 'London (LHR)',
+    airline: 'Lufthansa',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/lufthansa.svg',
+    price: 280,
+    currency: 'USD',
+  },
+  {
+    id: 3,
+    from: 'Istanbul (IST)',
+    to: 'Paris (CDG)',
+    airline: 'Air France',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/airfrance.svg',
+    price: 250,
+    currency: 'USD',
+  },
+  {
+    id: 4,
+    from: 'Istanbul (IST)',
+    to: 'Dubai (DXB)',
+    airline: 'Emirates',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/emirates.svg',
+    price: 320,
+    currency: 'USD',
+  },
+  {
+    id: 5,
+    from: 'Istanbul (IST)',
+    to: 'Tokyo (NRT)',
+    airline: 'ANA (All Nippon Airways)',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/ana.svg',
+    price: 680,
+    currency: 'USD',
+  },
+  {
+    id: 6,
+    from: 'Istanbul (IST)',
+    to: 'Singapore (SIN)',
+    airline: 'Singapore Airlines',
+    airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/singaporeairlines.svg',
+    price: 580,
+    currency: 'USD',
+  },
+]
+
+export default flights
