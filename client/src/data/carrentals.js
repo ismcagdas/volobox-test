@@ -10,7 +10,7 @@ const carRentals = [
     reviews: 1250,
     features: ['Air Conditioning', 'Automatic', 'USB Port'],
     availability: true,
-    imageUrl: 'https://images.unsplash.com/photo-1552519507-da3effff991c?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const carRentals = [
     reviews: 890,
     features: ['Air Conditioning', 'Automatic', 'Bluetooth', 'Backup Camera'],
     availability: true,
-    imageUrl: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3551238/pexels-photo-3551238.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const carRentals = [
     reviews: 650,
     features: ['Air Conditioning', 'Automatic', 'GPS', 'Roof Rack'],
     availability: true,
-    imageUrl: 'https://images.unsplash.com/photo-1606611013016-969c19d14ce9?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/2277462/pexels-photo-2277462.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const carRentals = [
     reviews: 520,
     features: ['Air Conditioning', 'Automatic', 'Leather Seats', 'Premium Sound'],
     availability: false,
-    imageUrl: 'https://images.unsplash.com/photo-1617654112368-307921291f42?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3973308/pexels-photo-3973308.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const carRentals = [
     reviews: 410,
     features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
     availability: true,
-    imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3631440/pexels-photo-3631440.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     id: 6,
@@ -75,7 +75,7 @@ const carRentals = [
     reviews: 780,
     features: ['Air Conditioning', 'Automatic', 'Towing Package', 'Bed Cover'],
     availability: true,
-    imageUrl: 'https://images.unsplash.com/photo-1533473359331-35acda7ce14a?w=400&h=250&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3807622/pexels-photo-3807622.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
 ]
 
