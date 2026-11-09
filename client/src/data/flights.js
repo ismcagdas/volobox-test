@@ -7,6 +7,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/turkishairlines.svg',
     price: 450,
     currency: 'USD',
+    departureTime: '09:00',
+    arrivalTime: '18:30',
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/lufthansa.svg',
     price: 280,
     currency: 'USD',
+    departureTime: '08:15',
+    arrivalTime: '10:45',
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/airfrance.svg',
     price: 250,
     currency: 'USD',
+    departureTime: '11:30',
+    arrivalTime: '13:15',
   },
   {
     id: 4,
@@ -34,6 +40,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/emirates.svg',
     price: 320,
     currency: 'USD',
+    departureTime: '14:00',
+    arrivalTime: '17:45',
   },
   {
     id: 5,
@@ -43,6 +51,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/ana.svg',
     price: 680,
     currency: 'USD',
+    departureTime: '15:20',
+    arrivalTime: '08:50',
   },
   {
     id: 6,
@@ -52,6 +62,8 @@ const flights = [
     airlineLogo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/singaporeairlines.svg',
     price: 580,
     currency: 'USD',
+    departureTime: '10:30',
+    arrivalTime: '21:15',
   },
 ]
 
