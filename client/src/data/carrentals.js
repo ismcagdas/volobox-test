@@ -10,6 +10,7 @@ const carRentals = [
     reviews: 1250,
     features: ['Air Conditioning', 'Automatic', 'USB Port'],
     availability: true,
+    imageUrl: 'https://images.unsplash.com/photo-1552519507-da3effff991c?w=400&h=250&fit=crop',
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const carRentals = [
     reviews: 890,
     features: ['Air Conditioning', 'Automatic', 'Bluetooth', 'Backup Camera'],
     availability: true,
+    imageUrl: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=400&h=250&fit=crop',
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const carRentals = [
     reviews: 650,
     features: ['Air Conditioning', 'Automatic', 'GPS', 'Roof Rack'],
     availability: true,
+    imageUrl: 'https://images.unsplash.com/photo-1606611013016-969c19d14ce9?w=400&h=250&fit=crop',
   },
   {
     id: 4,
@@ -46,6 +49,7 @@ const carRentals = [
     reviews: 520,
     features: ['Air Conditioning', 'Automatic', 'Leather Seats', 'Premium Sound'],
     availability: false,
+    imageUrl: 'https://images.unsplash.com/photo-1617654112368-307921291f42?w=400&h=250&fit=crop',
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ const carRentals = [
     reviews: 410,
     features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
     availability: true,
+    imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=250&fit=crop',
   },
   {
     id: 6,
@@ -70,6 +75,7 @@ const carRentals = [
     reviews: 780,
     features: ['Air Conditioning', 'Automatic', 'Towing Package', 'Bed Cover'],
     availability: true,
+    imageUrl: 'https://images.unsplash.com/photo-1533473359331-35acda7ce14a?w=400&h=250&fit=crop',
   },
 ]
 
