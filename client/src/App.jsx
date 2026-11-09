@@ -3,9 +3,10 @@ import HotelList from './components/HotelList'
 import HotelDetail from './components/HotelDetail'
 import RestaurantList from './components/RestaurantList'
 import FlightList from './components/FlightList'
+import CarRentalList from './components/CarRentalList'
 import './App.css'
 
-const NAV_TABS = ['Car rentals', 'Attractions', 'Airport taxis']
+const NAV_TABS = ['Attractions', 'Airport taxis']
 
 const tabClass = ({ isActive }) => 'site-nav__tab' + (isActive ? ' site-nav__tab--active' : '')
 
@@ -31,6 +32,7 @@ function App() {
               Sign in
             </button>
           </nav>
+
         </div>
         <div className="site-nav">
           <div className="site-nav__inner">
@@ -42,6 +44,9 @@ function App() {
             </NavLink>
             <NavLink to="/flights" className={tabClass}>
               Flights
+            </NavLink>
+            <NavLink to="/car-rentals" className={tabClass}>
+              Car rentals
             </NavLink>
             {NAV_TABS.map((tab) => (
               <button key={tab} type="button" className="site-nav__tab">
@@ -57,6 +62,7 @@ function App() {
           <Route path="/hotels/:id" element={<HotelDetail />} />
           <Route path="/restaurants" element={<RestaurantList />} />
           <Route path="/flights" element={<FlightList />} />
+          <Route path="/car-rentals" element={<CarRentalList />} />
         </Routes>
       </main>
       <footer className="site-footer">
