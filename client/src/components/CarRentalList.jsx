@@ -12,12 +12,13 @@ const FALLBACK_IMAGE =
   )
 
 function CarRentalList() {
+  const availableCount = carRentals.filter((rental) => rental.availability).length
   return (
     <div className="hotel-page">
       <section className="hotel-list-section">
         <div className="hotel-list-head">
           <h1 className="hotel-list-title">
-            Car Rentals: <span>{carRentals.length} cars available</span>
+            Car Rentals: <span>{availableCount} cars available</span>
           </h1>
         </div>
 
