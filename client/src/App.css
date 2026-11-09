@@ -539,6 +539,18 @@
   padding: 3px 8px;
 }
 
+.hotel-card__tag.available {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.hotel-card__tag.unavailable {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
 .hotel-card__aside {
   display: flex;
   flex-direction: column;
