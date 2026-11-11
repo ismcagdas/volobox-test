@@ -13,12 +13,11 @@ function CarRentalList() {
 
   const availableCount = carRentals.filter((rental) => rental.availability).length
 
-  const handleCalculatePrice = () => {
+  const recalculatePrices = (pickupDateTime, returnDateTime) => {
     setError('')
-    setPrices({})
 
     if (!pickupDateTime || !returnDateTime) {
-      setError('Lütfen alış ve iade tarihleri seçiniz')
+      setPrices({})
       return
     }
 
@@ -28,6 +27,7 @@ function CarRentalList() {
     const validation = validateDateRange(pickupDate, returnDate)
     if (!validation.valid) {
       setError(validation.error)
+      setPrices({})
       return
     }
 
@@ -37,6 +37,10 @@ function CarRentalList() {
       newPrices[rental.id] = price
     })
     setPrices(newPrices)
+  }
+
+  const handleCalculatePrice = () => {
+    recalculatePrices(pickupDateTime, returnDateTime)
   }
 
   const getSortedRentals = () => {
@@ -72,9 +76,11 @@ function CarRentalList() {
                 type="datetime-local"
                 value={pickupDateTime}
                 onChange={(e) => {
-                  setPickupDateTime(e.target.value)
-                  setPrices({})
-                  setError('')
+                  const newPickupDateTime = e.target.value
+                  setPickupDateTime(newPickupDateTime)
+                  if (Object.keys(prices).length > 0) {
+                    recalculatePrices(newPickupDateTime, returnDateTime)
+                  }
                 }}
               />
             </div>
@@ -85,9 +91,11 @@ function CarRentalList() {
                 type="datetime-local"
                 value={returnDateTime}
                 onChange={(e) => {
-                  setReturnDateTime(e.target.value)
-                  setPrices({})
-                  setError('')
+                  const newReturnDateTime = e.target.value
+                  setReturnDateTime(newReturnDateTime)
+                  if (Object.keys(prices).length > 0) {
+                    recalculatePrices(pickupDateTime, newReturnDateTime)
+                  }
                 }}
               />
             </div>
