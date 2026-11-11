@@ -1053,9 +1053,7 @@
 /* ---------- car rental calculator ---------- */
 
 .car-rental-calculator {
-  max-width: var(--page);
-  margin: 0 auto 24px;
-  padding: 0 20px;
+  margin-bottom: 24px;
   box-sizing: border-box;
 }
 
