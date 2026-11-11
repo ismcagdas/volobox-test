@@ -7,6 +7,19 @@ import carPhoto6 from '../assets/cars/car-6.jpg'
 
 const carRentals = [
   {
+    id: 5,
+    company: 'Dollar',
+    vehicleType: 'Van',
+    model: 'Volkswagen Beetle (New Beetle)',
+    pricePerDay: 75,
+    currency: 'USD',
+    rating: 4.2,
+    reviews: 410,
+    features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
+    availability: true,
+    imageUrl: carPhoto5,
+  },
+  {
     id: 1,
     company: 'Enterprise',
     vehicleType: 'Compact',
@@ -57,19 +70,6 @@ const carRentals = [
     features: ['Air Conditioning', 'Automatic', 'Leather Seats', 'Premium Sound'],
     availability: false,
     imageUrl: carPhoto4,
-  },
-  {
-    id: 5,
-    company: 'Dollar',
-    vehicleType: 'Van',
-    model: 'Volkswagen Beetle (New Beetle)',
-    pricePerDay: 75,
-    currency: 'USD',
-    rating: 4.2,
-    reviews: 410,
-    features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
-    availability: true,
-    imageUrl: carPhoto5,
   },
   {
     id: 6,
