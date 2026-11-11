@@ -1,15 +1,6 @@
 import carRentals from '../data/carrentals'
+import fallbackCarPhoto from '../assets/cars/car-1.jpg'
 import ratingLabel, { ratingColor, ratingTextColor } from '../ratingLabel'
-
-const FALLBACK_IMAGE =
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250">' +
-      '<rect width="100%" height="100%" fill="#e5e4e7"/>' +
-      '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" ' +
-      'font-family="sans-serif" font-size="18" fill="#6b6375">No image available</text>' +
-      '</svg>',
-  )
 
 function CarRentalList() {
   const availableCount = carRentals.filter((rental) => rental.availability).length
@@ -30,11 +21,11 @@ function CarRentalList() {
                   <img
                     className="hotel-card__image hotel-card__image--fixed"
                     src={rental.imageUrl}
-                    alt={rental.model}
+                    alt={`Sample rental car for ${rental.model}`}
                     loading="lazy"
                     onError={(event) => {
                       event.currentTarget.onerror = null
-                      event.currentTarget.src = FALLBACK_IMAGE
+                      event.currentTarget.src = fallbackCarPhoto
                     }}
                   />
                 </div>

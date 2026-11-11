@@ -1,3 +1,10 @@
+import carPhoto1 from '../assets/cars/car-1.jpg'
+import carPhoto2 from '../assets/cars/car-2.jpg'
+import carPhoto3 from '../assets/cars/car-3.jpg'
+import carPhoto4 from '../assets/cars/car-4.jpg'
+import carPhoto5 from '../assets/cars/car-5.jpg'
+import carPhoto6 from '../assets/cars/car-6.jpg'
+
 const carRentals = [
   {
     id: 1,
@@ -10,7 +17,7 @@ const carRentals = [
     reviews: 1250,
     features: ['Air Conditioning', 'Automatic', 'USB Port'],
     availability: true,
-    imageUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto1,
   },
   {
     id: 2,
@@ -23,7 +30,7 @@ const carRentals = [
     reviews: 890,
     features: ['Air Conditioning', 'Automatic', 'Bluetooth', 'Backup Camera'],
     availability: true,
-    imageUrl: 'https://images.pexels.com/photos/3551238/pexels-photo-3551238.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto2,
   },
   {
     id: 3,
@@ -36,7 +43,7 @@ const carRentals = [
     reviews: 650,
     features: ['Air Conditioning', 'Automatic', 'GPS', 'Roof Rack'],
     availability: true,
-    imageUrl: 'https://images.pexels.com/photos/2277462/pexels-photo-2277462.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto3,
   },
   {
     id: 4,
@@ -49,7 +56,7 @@ const carRentals = [
     reviews: 520,
     features: ['Air Conditioning', 'Automatic', 'Leather Seats', 'Premium Sound'],
     availability: false,
-    imageUrl: 'https://images.pexels.com/photos/3973308/pexels-photo-3973308.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto4,
   },
   {
     id: 5,
@@ -62,7 +69,7 @@ const carRentals = [
     reviews: 410,
     features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
     availability: true,
-    imageUrl: 'https://images.pexels.com/photos/3631440/pexels-photo-3631440.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto5,
   },
   {
     id: 6,
@@ -75,7 +82,7 @@ const carRentals = [
     reviews: 780,
     features: ['Air Conditioning', 'Automatic', 'Towing Package', 'Bed Cover'],
     availability: true,
-    imageUrl: 'https://images.pexels.com/photos/3807622/pexels-photo-3807622.jpeg?auto=compress&cs=tinysrgb&w=400',
+    imageUrl: carPhoto6,
   },
 ]
 
