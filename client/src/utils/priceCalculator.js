@@ -45,7 +45,7 @@ export function formatPrice(price) {
   if (price === null) {
     return null;
   }
-  return price.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+  return price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 }
 
 export function validateDateRange(pickupDate, returnDate) {
