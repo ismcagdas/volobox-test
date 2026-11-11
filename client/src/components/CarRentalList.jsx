@@ -10,13 +10,17 @@ function CarRentalList() {
   const [prices, setPrices] = useState({})
   const [error, setError] = useState('')
   const [sortByPrice, setSortByPrice] = useState(false)
+  const [isCalculationActive, setIsCalculationActive] = useState(false)
 
   const availableCount = carRentals.filter((rental) => rental.availability).length
 
-  const recalculatePrices = (pickupDateTime, returnDateTime) => {
+  const recalculatePrices = (pickupDateTime, returnDateTime, isExplicitClick = false) => {
     setError('')
 
     if (!pickupDateTime || !returnDateTime) {
+      if (isExplicitClick) {
+        setError('Lütfen alış ve iade tarihleri seçiniz')
+      }
       setPrices({})
       return
     }
@@ -40,7 +44,8 @@ function CarRentalList() {
   }
 
   const handleCalculatePrice = () => {
-    recalculatePrices(pickupDateTime, returnDateTime)
+    setIsCalculationActive(true)
+    recalculatePrices(pickupDateTime, returnDateTime, true)
   }
 
   const getSortedRentals = () => {
@@ -78,7 +83,7 @@ function CarRentalList() {
                 onChange={(e) => {
                   const newPickupDateTime = e.target.value
                   setPickupDateTime(newPickupDateTime)
-                  if (Object.keys(prices).length > 0) {
+                  if (isCalculationActive) {
                     recalculatePrices(newPickupDateTime, returnDateTime)
                   }
                 }}
@@ -93,7 +98,7 @@ function CarRentalList() {
                 onChange={(e) => {
                   const newReturnDateTime = e.target.value
                   setReturnDateTime(newReturnDateTime)
-                  if (Object.keys(prices).length > 0) {
+                  if (isCalculationActive) {
                     recalculatePrices(pickupDateTime, newReturnDateTime)
                   }
                 }}
