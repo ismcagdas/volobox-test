@@ -1,4 +1,9 @@
-import carPlaceholder from '../assets/car-placeholder.svg'
+import carPhoto1 from '../assets/cars/car-1.jpg'
+import carPhoto2 from '../assets/cars/car-2.jpg'
+import carPhoto3 from '../assets/cars/car-3.jpg'
+import carPhoto4 from '../assets/cars/car-4.jpg'
+import carPhoto5 from '../assets/cars/car-5.jpg'
+import carPhoto6 from '../assets/cars/car-6.jpg'
 
 const carRentals = [
   {
@@ -12,7 +17,7 @@ const carRentals = [
     reviews: 1250,
     features: ['Air Conditioning', 'Automatic', 'USB Port'],
     availability: true,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto1,
   },
   {
     id: 2,
@@ -25,7 +30,7 @@ const carRentals = [
     reviews: 890,
     features: ['Air Conditioning', 'Automatic', 'Bluetooth', 'Backup Camera'],
     availability: true,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto2,
   },
   {
     id: 3,
@@ -38,7 +43,7 @@ const carRentals = [
     reviews: 650,
     features: ['Air Conditioning', 'Automatic', 'GPS', 'Roof Rack'],
     availability: true,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto3,
   },
   {
     id: 4,
@@ -51,7 +56,7 @@ const carRentals = [
     reviews: 520,
     features: ['Air Conditioning', 'Automatic', 'Leather Seats', 'Premium Sound'],
     availability: false,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto4,
   },
   {
     id: 5,
@@ -64,7 +69,7 @@ const carRentals = [
     reviews: 410,
     features: ['Air Conditioning', 'Automatic', 'Sliding Doors', '7 Seater'],
     availability: true,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto5,
   },
   {
     id: 6,
@@ -77,7 +82,7 @@ const carRentals = [
     reviews: 780,
     features: ['Air Conditioning', 'Automatic', 'Towing Package', 'Bed Cover'],
     availability: true,
-    imageUrl: carPlaceholder,
+    imageUrl: carPhoto6,
   },
 ]
 
