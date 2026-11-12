@@ -78,38 +78,49 @@ function HotelDetail() {
           <span className="hotel-detail__price">US${hotel.pricePerNight}</span>
           <span className="hotel-detail__price-unit">per night</span>
 
-          <div style={{ marginTop: '16px', marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
-              Check-in
-            </label>
-            <input
-              type="date"
-              value={checkInDate}
-              onChange={(e) => setCheckInDate(e.target.value)}
-              style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
-            />
-          </div>
+          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
+            <div style={{ flex: 1 }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
+                Check-in
+              </label>
+              <input
+                type="date"
+                value={checkInDate}
+                onChange={(e) => setCheckInDate(e.target.value)}
+                style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+              />
+            </div>
 
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
-              Check-out
-            </label>
-            <input
-              type="date"
-              value={checkOutDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
-              style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
-            />
+            <div style={{ flex: 1 }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
+                Check-out
+              </label>
+              <input
+                type="date"
+                value={checkOutDate}
+                onChange={(e) => setCheckOutDate(e.target.value)}
+                style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="btn-primary"
+              disabled={!validation.valid}
+              style={{ opacity: !validation.valid ? 0.5 : 1, cursor: !validation.valid ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap' }}
+            >
+              Reserve
+            </button>
           </div>
 
           {checkInDate && checkOutDate && !validation.valid && (
-            <div style={{ color: '#d32f2f', fontSize: '14px', marginBottom: '16px' }}>
+            <div style={{ color: '#d32f2f', fontSize: '14px', marginTop: '16px', marginBottom: '16px' }}>
               {validation.error}
             </div>
           )}
 
           {priceData && (
-            <div style={{ fontSize: '14px', marginBottom: '16px', lineHeight: '1.6' }}>
+            <div style={{ fontSize: '14px', marginTop: '16px', marginBottom: '16px', lineHeight: '1.6' }}>
               <div>{priceData.nights} nights: {formatPrice(priceData.nightsTotal)}</div>
               {priceData.discountAmount > 0 && (
                 <div style={{ color: '#2e7d32' }}>Discount: {formatPrice(priceData.discountAmount)}</div>
@@ -120,15 +131,6 @@ function HotelDetail() {
               </div>
             </div>
           )}
-
-          <button
-            type="button"
-            className="btn-primary"
-            disabled={!validation.valid}
-            style={{ opacity: !validation.valid ? 0.5 : 1, cursor: !validation.valid ? 'not-allowed' : 'pointer' }}
-          >
-            Reserve
-          </button>
         </div>
       </div>
 
