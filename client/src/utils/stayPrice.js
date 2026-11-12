@@ -1,7 +1,9 @@
 export function calculateNights(checkInDate, checkOutDate) {
+  // Calculate calendar nights using UTC to avoid DST issues
+  const checkInUTC = new Date(Date.UTC(checkInDate.getFullYear(), checkInDate.getMonth(), checkInDate.getDate()))
+  const checkOutUTC = new Date(Date.UTC(checkOutDate.getFullYear(), checkOutDate.getMonth(), checkOutDate.getDate()))
   const msPerDay = 24 * 60 * 60 * 1000
-  const diffMs = checkOutDate - checkInDate
-  return Math.ceil(diffMs / msPerDay)
+  return (checkOutUTC - checkInUTC) / msPerDay
 }
 
 export function isFridayOrSaturday(date) {
