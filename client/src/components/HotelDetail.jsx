@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import hotels from '../data/hotels'
 import ratingLabel from '../ratingLabel'
+import { calculateStayPrice, validateStayDates, formatPrice } from '../utils/stayPrice'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;utf8,' +
@@ -26,6 +27,24 @@ function HotelDetail() {
     : []
   const [activeUrl, setActiveUrl] = useState(gallery[0]?.url)
   const active = gallery.find((image) => image.url === activeUrl) || gallery[0]
+
+  const [checkInDate, setCheckInDate] = useState('')
+  const [checkOutDate, setCheckOutDate] = useState('')
+
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  const checkInObj = checkInDate ? new Date(checkInDate + 'T00:00:00') : null
+  const checkOutObj = checkOutDate ? new Date(checkOutDate + 'T00:00:00') : null
+
+  let validation = { valid: false }
+  let priceData = null
+  if (checkInObj && checkOutObj) {
+    validation = validateStayDates(checkInObj, checkOutObj, today)
+    if (validation.valid) {
+      priceData = calculateStayPrice(hotel.pricePerNight, checkInObj, checkOutObj)
+    }
+  }
 
   if (!hotel) {
     return (
@@ -58,7 +77,56 @@ function HotelDetail() {
         <div className="hotel-detail__book">
           <span className="hotel-detail__price">US${hotel.pricePerNight}</span>
           <span className="hotel-detail__price-unit">per night</span>
-          <button type="button" className="btn-primary">
+
+          <div style={{ marginTop: '16px', marginBottom: '16px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
+              Check-in
+            </label>
+            <input
+              type="date"
+              value={checkInDate}
+              onChange={(e) => setCheckInDate(e.target.value)}
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>
+              Check-out
+            </label>
+            <input
+              type="date"
+              value={checkOutDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+            />
+          </div>
+
+          {checkInDate && checkOutDate && !validation.valid && (
+            <div style={{ color: '#d32f2f', fontSize: '14px', marginBottom: '16px' }}>
+              {validation.error}
+            </div>
+          )}
+
+          {priceData && (
+            <div style={{ fontSize: '14px', marginBottom: '16px', lineHeight: '1.6' }}>
+              <div>{priceData.nights} nights: {formatPrice(priceData.nightsTotal)}</div>
+              {priceData.discountAmount > 0 && (
+                <div style={{ color: '#2e7d32' }}>Discount: {formatPrice(priceData.discountAmount)}</div>
+              )}
+              <div>City tax: {formatPrice(priceData.cityTax)}</div>
+              <div style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '16px' }}>
+                Total: {formatPrice(priceData.total)}
+              </div>
+            </div>
+          )}
+
+          <button
+            type="button"
+            className="btn-primary"
+            disabled={!validation.valid}
+            style={{ opacity: !validation.valid ? 0.5 : 1, cursor: !validation.valid ? 'not-allowed' : 'pointer' }}
+          >
             Reserve
           </button>
         </div>
